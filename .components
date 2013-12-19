@@ -1,0 +1,9 @@
+---
+:orm: mongomapper
+:test: rspec
+:mock: none
+:script: jquery
+:renderer: slim
+:stylesheet: none
+:namespace: Tiralabomba
+:migration_format: number
