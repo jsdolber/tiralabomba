@@ -3,7 +3,9 @@
 :test: rspec
 :mock: none
 :script: jquery
-:renderer: slim
+:renderer: haml
 :stylesheet: none
 :namespace: Tiralabomba
 :migration_format: number
+:stylesheet: sass
+:admin_renderer: haml

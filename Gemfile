@@ -14,9 +14,10 @@ source 'https://rubygems.org'
 gem 'rake'
 
 # Component requirements
-gem 'slim'
 gem 'bson_ext', :require => 'mongo'
 gem 'mongo_mapper'
+gem 'sass'
+gem 'haml'
 
 # Test requirements
 gem 'rspec', :group => 'test'

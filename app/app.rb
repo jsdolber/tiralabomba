@@ -57,5 +57,11 @@ module Tiralabomba
     #     render 'errors/505'
     #   end
     #
+    
+    get :index do
+      # url is generated as '/'
+      # url_for(:index) => "/"
+      render "index"
+    end
   end
 end
