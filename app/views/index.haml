@@ -1,1 +1,4 @@
-%p Hello
+%form{:role=>"form"}
+  %textarea.form-control{:rows=>"3", :placeholder => "Descargate", :id => "dropit_input"}
+  %span.text-muted{:id => "dropit_count"} 0
+  %button{:type=>"submit", :class=>"btn btn-danger pull-right"} Boom !
