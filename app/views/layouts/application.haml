@@ -2,22 +2,31 @@
 %html
   %head
     %title= [@title, "Tira La Bomba"].compact.join(" | ")
-    %link{:href => "//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css", :rel => "stylesheet"}
-    %link{:href => "//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css", :rel => "stylesheet"}    
+    %link{:href => "//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css", :rel => "stylesheet"}
+    %link{:href => "//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css", :rel => "stylesheet"}
+    %link{:href => "http://fonts.googleapis.com/css?family=PT+Sans+Narrow", :rel => "stylesheet"}
     = stylesheet_link_tag 'reset', 'application'
     = javascript_include_tag 'jquery', 'application'
-    %script{:src => "//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"}      
+    %script{:src => "//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"}      
     %meta{:name=>'viewport', :content=> 'width=device-width, initial-scale=1.0'}
     = yield_content :include
   %body
     #wrap
       .container
         .row
-          .col-md-2
+          .col-md-2.title.extruded
             %h1 Tira La Bomba
+          %div.addthis_toolbox.addthis_floating_style.addthis_counter_style{:style => "left:50px;top:50px;"}
+            %a.addthis_button_facebook_like{":fb:like:layout" => "box_count"}
+            %a.addthis_button_tweet{":tw:count" => "vertical"}
+            %a.addthis_button_google_plusone{":g:plusone:size" => "tall"}
+            %a.addthis_counter
+            %script
+              var addthis_config = {"data_track_addressbar":true};
+            %script{:src => "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5300db5b235e4b60"}
           .col-md-10            
             #main= yield
     #footer
       .container
-        %p.text-muted Copyright (c) 2014 Tira La Bomba
+        %p.text-muted.copyleft.pull-right Copyleft (c) 2014 ; Tira La Bomba.
         

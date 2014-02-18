@@ -21,6 +21,7 @@ body {
 #footer {
   height: 60px;
   background-color: #f5f5f5;
+  opacity:0.75;
 }
 
 
@@ -45,3 +46,58 @@ body {
 .btn {
 	margin-top:5px;
 }
+
+.post-background {margin-top:100px;background:white;}
+
+body { background-image: url('/assets/bo_play_pattern_@2x.png'); }
+body { background-position: initial initial; background-repeat: initial initial; }
+
+.col-md-2.title {color:white}
+
+.extruded {
+    color: #888;
+    font-family: proxima-nova-1, proxima-nova-2, 'Helvetica Neue', Arial, sans-serif; /* the original site doesn't use the @font-face attribute */
+    font-size: 48px;
+    font-weight: bold;
+    text-shadow: #88C7C7 1px 1px, #88C7C7 2px 2px, #88C7C7 3px 3px;
+    position: relative;
+    -moz-transition: all 0.3s ease-out; /* FF3.7+ */
+       -o-transition: all 0.3s ease-out; /* Opera 10.5 */
+  -webkit-transition: all 0.3s ease-out; /* Saf3.2+, Chrome */
+          transition: all 0.3s ease-out;
+
+    cursor: pointer;
+}
+
+.extruded:hover {
+    color: #FFF;
+    text-shadow: #d9534f 1px 1px, #d9534f 2px 2px, #d9534f 3px 3px, #d9534f 4px 4px, #d9534f 5px 5px, #d9534f 6px 6px;
+    left: -6px;
+    top: -6px;
+}
+
+.post {font-family: 'PT Sans Narrow', sans-serif; font-size:16.5px}
+
+#dropit_input {font-family: 'PT Sans Narrow', sans-serif; font-size:16.5px}
+
+.post-time {margin-bottom:10px;margin-right:40px;font-size:80%;}
+
+p.copyleft {color:#333;}
+
+.separator {text-align:center;}
+
+.social-icons {margin-right:40px;cursor:pointer;font-size:18.5px;}
+.fa-facebook-square:hover {color:blue;}
+.fa-twitter-square:hover {color:aqua;}
+.fa-google-plus-square:hover {color:darkred;}
+.fa-envelope:hover {color:coral;}
+
+.addthis_floating_style {background:#bbb;padding:0;padding-top:5px;}
+
+.voting {margin-top:10px;}
+
+.vote-0 {color:red;}
+.vote-1 {color:red;}
+.vote-2 {color:red;}
+.vote-3 {color:inherit;}
+.vote-4 {color:inherit;}
