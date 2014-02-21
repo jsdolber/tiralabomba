@@ -86,7 +86,7 @@ p.copyleft {color:#333;}
 
 .separator {text-align:center;}
 
-.social-icons {margin-right:40px;cursor:pointer;font-size:18.5px;}
+.social-icons {margin-right:40px;cursor:pointer;font-size:18.5px;padding-right:0px;}
 .fa-facebook-square:hover {color:blue;}
 .fa-twitter-square:hover {color:aqua;}
 .fa-google-plus-square:hover {color:darkred;}
