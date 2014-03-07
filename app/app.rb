@@ -3,6 +3,9 @@ module Tiralabomba
     register Padrino::Rendering
     register Padrino::Mailer
     register Padrino::Helpers
+    helpers AppHelper
+
+    require 'base64'
 
     enable :sessions
 
@@ -46,12 +49,21 @@ module Tiralabomba
     #   end
     #
 
+    error do
+      "Dificultades tecnicas. Sepa disculpar."
+    end
+
+    not_found do
+      "Hola! Estas perdid@??"
+    end
+
     ##
     # You can manage errors like:
     #
-    #   error 404 do
+    #    error 404 do
     #     render 'errors/404'
-    #   end
+    #    end
+
     #
     #   error 505 do
     #     render 'errors/505'
@@ -59,17 +71,25 @@ module Tiralabomba
     #
     
     get :index do
-      # url is generated as '/'
-      # url_for(:index) => "/"
+      @page = (params[:p] || 1).to_i
+      @filter = params[:f] || 'n'
       @post = Post.new
-      @posts = Post.sort(:created_at.desc)
+      @posts = @filter == 'n'? Post.get_page_results(@page) : Post.get_popular_page_results(@page)
+
       render "index"
+    end
+
+    get :show, :with => :id do
+      @post = Post.find_by_id(params[:id])
+      redirect url('/') if @post.nil?
+      render "show"
     end
 
     post :create_post do
       p = Post.new
       p.content = params[:content]
-      
+      p.user_id = Post.get_user_id_from_request(request)
+
       if !p.save
         flash[:notice] = '!' + p.errors.messages[:content].first
       end
@@ -86,6 +106,7 @@ module Tiralabomba
         v.rating = params[:rating]
         p.last_voted = Time.now
         p.votes << v
+        p.stored_avg = p.vote_avg + p.votes.count
         p.save!
       end
     end

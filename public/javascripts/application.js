@@ -31,5 +31,6 @@ $(document).ready(function() {
         });
     });
 
-
+    $(".filter-n").click(function(){ location.href = '/?f=n'});
+    $(".filter-p").click(function(){ location.href = '/?f=p'});
 });

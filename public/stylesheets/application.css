@@ -47,7 +47,8 @@ body {
 	margin-top:5px;
 }
 
-.post-background {margin-top:100px;background:white;}
+.filters {margin-top: 50px; text-align: center;}
+.post-background {margin-top:50px;background:white;}
 
 body { background-image: url('/assets/bo_play_pattern_@2x.png'); }
 body { background-position: initial initial; background-repeat: initial initial; }
@@ -88,12 +89,14 @@ p.copyleft {color:#333;}
 .separator {text-align:center;}
 
 .social-icons {margin-right:40px;cursor:pointer;font-size:18.5px;padding-right:0px;}
-.fa-facebook-square:hover {color:blue;}
-.fa-twitter-square:hover {color:aqua;}
-.fa-google-plus-square:hover {color:darkred;}
-.fa-envelope:hover {color:coral;}
+.social-icons a {color:inherit;text-decoration:none;}
 
-.addthis_floating_style {background:#bbb;padding:0;padding-top:5px;}
+.fa-facebook-square:hover {color:#3276b1;}
+.fa-twitter-square:hover {color:#39b3d7;}
+.fa-google-plus-square:hover {color:#d2322d;}
+.fa-envelope:hover {color:#ed9c28;}
+
+.addthis_floating_style {background:none;padding:0;padding-top:5px;}
 
 .voting {margin-top:10px;cursor:pointer;}
 
