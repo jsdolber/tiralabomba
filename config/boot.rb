@@ -31,6 +31,10 @@ I18n.default_locale = :es
 # end
 
 ##
+# Throttle configuration
+Padrino.use Rack::Throttle::Hourly
+
+##
 # Add your before (RE)load hooks here
 #
 Padrino.before_load do
