@@ -61,7 +61,33 @@ module Tiralabomba
     get :index do
       # url is generated as '/'
       # url_for(:index) => "/"
+      @post = Post.new
+      @posts = Post.sort(:created_at.desc)
       render "index"
+    end
+
+    post :create_post do
+      p = Post.new
+      p.content = params[:content]
+      
+      if !p.save
+        flash[:notice] = '!' + p.errors.messages[:content].first
+      end
+      
+      redirect url('/')
+
+    end
+
+    post :vote_post do
+      p = Post.find(params[:post_id])
+      
+      if (p)
+        v = Vote.new
+        v.rating = params[:rating]
+        p.last_voted = Time.now
+        p.votes << v
+        p.save!
+      end
     end
   end
 end

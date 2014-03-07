@@ -77,6 +77,7 @@ body { background-position: initial initial; background-repeat: initial initial;
 }
 
 .post {font-family: 'PT Sans Narrow', sans-serif; font-size:16.5px}
+.post-content {padding-left:15px;}
 
 #dropit_input {font-family: 'PT Sans Narrow', sans-serif; font-size:16.5px}
 
@@ -94,10 +95,6 @@ p.copyleft {color:#333;}
 
 .addthis_floating_style {background:#bbb;padding:0;padding-top:5px;}
 
-.voting {margin-top:10px;}
+.voting {margin-top:10px;cursor:pointer;}
 
-.vote-0 {color:red;}
-.vote-1 {color:red;}
-.vote-2 {color:red;}
-.vote-3 {color:inherit;}
-.vote-4 {color:inherit;}
+.flash-notice {color:white;}
