@@ -13,6 +13,7 @@ source 'https://rubygems.org'
 # Project requirements
 gem 'rake'
 gem 'rack-throttle', :require => 'rack/throttle'
+gem 'bcrypt', :require => "bcrypt"
 
 # Component requirements
 gem 'bson_ext', :require => 'mongo'

@@ -7,6 +7,8 @@ GEM
     activesupport (3.2.16)
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
+    bcrypt (3.1.7)
+    bcrypt (3.1.7-x86-mingw32)
     bson (1.9.2)
     bson_ext (1.9.2)
       bson (~> 1.9.2)
@@ -95,6 +97,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  bcrypt
   bson_ext
   haml
   mongo_mapper

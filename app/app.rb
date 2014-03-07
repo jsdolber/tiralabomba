@@ -3,7 +3,6 @@ module Tiralabomba
     register Padrino::Rendering
     register Padrino::Mailer
     register Padrino::Helpers
-    helpers AppHelper
 
     require 'base64'
 

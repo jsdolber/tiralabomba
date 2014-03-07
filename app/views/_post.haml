@@ -1,7 +1,7 @@
 %div.row.post{:id => post.id}
   %div.row
     %div.row
-      %span.label.pull-right.post-time{:class => label_style_for_post(post.created_at)}
+      %span.label.pull-right.post-time{:class => AppHelper.label_style_for_post(post.created_at)}
         = 'Hace ' + time_ago_in_words(post.created_at || Time.now)
     %div.row.post-content
       = simple_format(post.content)
@@ -13,13 +13,13 @@
         %i.glyphicon.glyphicon-fire.vote{:id => 3, :style => (post.stored_avg.to_f > 4 ? "color:red" : "color:inherit")}
         %i.glyphicon.glyphicon-fire.vote{:id => 4, :style => (post.stored_avg.to_f > 5 ? "color:red" : "color:inherit")}
       .col-md-5.social-icons.pull-right{:style => "text-align:right"}
-        %a{:href => href_for_facebook_share(post.id)}
+        %a{:href => AppHelper.href_for_facebook_share(post.id)}
           %i.fa.fa-facebook-square
-        %a{:href => href_for_twitter_share(post.id)}
+        %a{:href => AppHelper.href_for_twitter_share(post.id)}
           %i.fa.fa-twitter-square
-        %a{:href => href_for_gplus_share(post.id)}
+        %a{:href => AppHelper.href_for_gplus_share(post.id)}
           %i.fa.fa-google-plus-square
-        %a{:href => href_for_email_share(post.id)}
+        %a{:href => AppHelper.href_for_email_share(post.id)}
           %i.fa.fa-envelope
     %div.separator
       %hr
