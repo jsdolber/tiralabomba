@@ -10,7 +10,7 @@ class Post
   timestamps!
 
   validates_length_of :content, :within => 10..500, :too_long => "tu mensaje tiene que ser mas corto", :too_short => "tu mensaje tiene que ser mas largo"  
-  validate :throttle_interval
+  #validate :throttle_interval
 
   def vote_avg
     total_rating = 0
@@ -47,10 +47,14 @@ class Post
   # for new posts only
   def throttle_interval
     last_post = Post.all(:user_id => user_id).last
-    minute_diff = (Time.now - last_post.created_at) / 60
 
-    if minute_diff < 1 && self.new?
-      errors.add( :content, "espera un poco para postear de nuevo")
-    end    
+    unless last_post.nil?
+      minute_diff = (Time.now - last_post.created_at) / 60
+
+      if minute_diff < 1 && self.new?
+        errors.add( :content, "espera un poco para postear de nuevo")
+      end  
+    end
+  
   end
 end

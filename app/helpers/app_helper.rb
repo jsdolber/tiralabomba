@@ -20,4 +20,8 @@ class AppHelper
     return "label-danger" if minute_diff < 5
     "label-default"
   end
+
+  def self.text_for_input_placeholder
+    ['No tengas miedo, desahogate...', 'Mandalos a la mierda, hace catarsis...', 'Larga todo y ponete un bar en la playa'].sample
+  end
 end

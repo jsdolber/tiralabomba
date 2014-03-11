@@ -8,6 +8,11 @@ $(document).ready(function() {
         var text_length = $('#dropit_input').val().length;
         var text_remaining = text_max - text_length;
 
+        if (text_remaining < 0)
+            $("#dropit_count").css('color', 'red');
+        else
+            $("#dropit_count").css('color', 'inherit');
+
         $('#dropit_count').html(text_remaining);
     });
 
@@ -24,6 +29,7 @@ $(document).ready(function() {
         .fail(function() {
         })
         .always(function() {
+            el.parent().find(".vote").css('color', 'black');
             for (var i = rating; i >= 0; i--) {
                 el.parent().find(".vote#" + i).css('color', 'red');
             };
@@ -33,4 +39,24 @@ $(document).ready(function() {
 
     $(".filter-n").click(function(){ location.href = '/?f=n'});
     $(".filter-p").click(function(){ location.href = '/?f=p'});
+
+    var toggleTitle = function(){
+            $('.title').toggleClass('extruded-hover');
+        };
+
+    $(".title").hover(
+        toggleTitle,
+        toggleTitle
+    );
+
+    setInterval(function() {
+        toggleTitle()
+    }, 60000);
+
+        setInterval(function() {
+        toggleTitle()
+    }, 60500);
+    
+
+
 });
