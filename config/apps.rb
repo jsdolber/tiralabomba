@@ -33,6 +33,10 @@ Padrino.configure_apps do
 
 end
 
+Padrino.use(Rack::Auth::Basic) do |username, password|
+  username == 'tirala' && password == 'bombita'
+end 
+
 # Mounts the core application for this project
 Padrino.mount('Tiralabomba::App', :app_file => Padrino.root('app/app.rb')).to('/')
 
