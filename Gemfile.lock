@@ -1,6 +1,17 @@
+GIT
+  remote: git://github.com/nightsailer/padrino-sprockets.git
+  revision: ae18862677fe8a6fe36c85dbc5b016ed919421ba
+  specs:
+    padrino-sprockets (0.0.3)
+      sprockets
+
 GEM
   remote: https://rubygems.org/
   specs:
+    POpen4 (0.1.4)
+      Platform (>= 0.4.0)
+      open4
+    Platform (0.4.0)
     activemodel (3.2.16)
       activesupport (= 3.2.16)
       builder (~> 3.0.0)
@@ -17,6 +28,7 @@ GEM
     diff-lcs (1.2.5)
     eventmachine (1.0.3)
     eventmachine (1.0.3-x86-mingw32)
+    execjs (2.0.2)
     haml (4.0.4)
       tilt
     hike (1.2.3)
@@ -35,6 +47,7 @@ GEM
       activesupport (~> 3.0)
       plucky (~> 0.5.2)
     multi_json (1.8.2)
+    open4 (1.3.3)
     padrino (0.11.4)
       padrino-admin (= 0.11.4)
       padrino-cache (= 0.11.4)
@@ -45,10 +58,6 @@ GEM
     padrino-admin (0.11.4)
       padrino-core (= 0.11.4)
       padrino-helpers (= 0.11.4)
-    padrino-assets (0.3.1)
-      padrino-core
-      padrino-helpers
-      sprockets (~> 2.4.0)
     padrino-cache (0.11.4)
       padrino-core (= 0.11.4)
       padrino-helpers (= 0.11.4)
@@ -93,7 +102,7 @@ GEM
       rack (~> 1.4)
       rack-protection (~> 1.4)
       tilt (~> 1.3, >= 1.3.4)
-    sprockets (2.4.5)
+    sprockets (2.12.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
@@ -107,8 +116,13 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
+    uglifier (2.1.1)
+      execjs (>= 0.3.0)
+      multi_json (~> 1.0, >= 1.0.2)
     url_mount (0.2.1)
       rack
+    yui-compressor (0.9.6)
+      POpen4 (>= 0.1.4)
 
 PLATFORMS
   ruby
@@ -120,7 +134,7 @@ DEPENDENCIES
   haml
   mongo_mapper
   padrino (= 0.11.4)
-  padrino-assets
+  padrino-sprockets!
   rack-test
   rack-throttle
   rake
@@ -128,3 +142,5 @@ DEPENDENCIES
   rspec
   sass
   thin
+  uglifier (= 2.1.1)
+  yui-compressor (= 0.9.6)

@@ -3,8 +3,9 @@ module Tiralabomba
     register Padrino::Rendering
     register Padrino::Mailer
     register Padrino::Helpers
-    register Padrino::Assets
-    
+    register Padrino::Sprockets
+    sprockets :minify => (Padrino.env == :production)
+
     require 'base64'
 
     enable :sessions
