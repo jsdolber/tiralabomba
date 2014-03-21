@@ -50,7 +50,7 @@ body {
 .filters {margin-top: 50px; text-align: center;}
 .post-background {margin-top:50px;background:white;}
 
-body { background-image: url('assets/bo_play_pattern_@2x.png'); }
+body { background-image: url('/assets/bckg.png'); }
 body { background-position: initial initial; background-repeat: initial initial; }
 
 .col-md-2.title {color:white}
