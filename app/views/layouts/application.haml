@@ -33,5 +33,13 @@
             #main= yield
     #footer
       .container
+        %p.bottom-nav.pull-left
+          = link_to "Privacidad", url_for(:privacy)
+          |
+          = link_to "Quienes Somos", url_for(:who)
+          |
+          = link_to "Contacto", url_for(:contact)
+          |
+          = link_to "TOS", url_for(:terms)
         %p.text-muted.copyleft.pull-right Copyright (c) 2014 ; Tira La Bomba.
     = javascript_include_tag 'google-analytics'       

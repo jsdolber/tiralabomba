@@ -111,5 +111,22 @@ module Tiralabomba
         p.save!
       end
     end
+
+    get :who do
+      render "who"
+    end
+
+    get :privacy do
+      render "privacy"
+    end
+
+    get :contact do
+      render "contact"
+    end
+
+    get :terms do
+      render "terms"
+    end
+    
   end
 end
