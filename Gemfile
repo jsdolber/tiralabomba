@@ -34,6 +34,8 @@ gem 'yui-compressor', '0.9.6'
 
 gem 'redis'
 
+gem 'builder'
+
 # Or Padrino Edge
 # gem 'padrino', :github => 'padrino/padrino-framework'
 

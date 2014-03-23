@@ -86,6 +86,11 @@ module Tiralabomba
       render "show"
     end
 
+    get '/rss' do
+      @posts = Post.get_page_results(0)
+      builder :rss
+    end
+
     post :create_post do
       p = Post.new
       p.content = params[:content]
