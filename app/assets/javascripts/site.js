@@ -16,7 +16,7 @@ $(document).ready(function() {
         $('#dropit_count').html(text_remaining);
     });
 
-    $(".btn-create").html('<i class="glyphicon glyphicon-fire" ></i>&nbspBoom !');
+    $(".btn-create").html('<i class="glyphicon glyphicon-fire" ></i>&nbspBoom');
 
     $('.vote').click(function(){
        var post_id = $(this).closest('.post').attr('id');

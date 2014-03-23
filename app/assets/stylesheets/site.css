@@ -83,7 +83,8 @@ body {
 body { background-image: url('/assets/bckg.png'); }
 body { background-position: initial initial; background-repeat: initial initial; }
 
-.col-md-2.title {color:white}
+.col-md-2.title {color:white; padding-right:25px; text-align: left; }
+.title img {margin: 0 auto;}
 
 .extruded {
     color: #888;
