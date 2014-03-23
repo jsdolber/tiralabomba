@@ -28,6 +28,11 @@ body {
 
 @media (max-width: 1200px) { 
   .addthis_toolbox {display:none;}
+  .col-md-2.title {display: none;}
+  .bottom-nav {display: none;}
+  .social-links {text-align: center;}
+  .copyleft {text-align: center;}
+  .post-content {padding-right: 15px;}
 }
 
 /* Custom page CSS
@@ -84,9 +89,9 @@ body { background-image: url('/assets/bckg.png'); }
 body { background-position: initial initial; background-repeat: initial initial; }
 
 .col-md-2.title {color:white; padding-right:25px; text-align: left; }
-.title img {margin: 0 auto;}
-
-.extruded {
+.title img {margin: 20px 20px; cursor: pointer}
+.title-text {font-family: 'PT Sans Narrow', sans-serif; font-size:17px; color:#aaa; margin-left: 1px}
+/*.extruded {
     color: #888;
     font-family: proxima-nova-1, proxima-nova-2, 'Helvetica Neue', Arial, sans-serif; /* the original site doesn't use the @font-face attribute */
     font-size: 48px;
@@ -106,7 +111,7 @@ body { background-position: initial initial; background-repeat: initial initial;
     text-shadow: #d9534f 1px 1px, #d9534f 2px 2px, #d9534f 3px 3px, #d9534f 4px 4px, #d9534f 5px 5px, #d9534f 6px 6px;
     left: -6px;
     top: -6px;
-}
+}*/
 
 .post-content {padding-left:15px;}
 .post-content p {font-family: 'PT Sans Narrow', sans-serif; font-size:17px}
