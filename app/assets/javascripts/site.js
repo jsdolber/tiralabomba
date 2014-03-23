@@ -16,7 +16,7 @@ $(document).ready(function() {
         $('#dropit_count').html(text_remaining);
     });
 
-    $(".button").html('<i class="glyphicon glyphicon-fire" ></i>&nbspBoom !');
+    $(".btn-create").html('<i class="glyphicon glyphicon-fire" ></i>&nbspBoom !');
 
     $('.vote').click(function(){
        var post_id = $(this).closest('.post').attr('id');
@@ -39,6 +39,10 @@ $(document).ready(function() {
 
     $(".filter-n").click(function(){ location.href = '/?f=n'});
     $(".filter-p").click(function(){ location.href = '/?f=p'});
+
+    $(".title").click(function (){
+        location.href = '/';
+    });
 
     var toggleTitle = function(){
             $('.title').toggleClass('extruded-hover');

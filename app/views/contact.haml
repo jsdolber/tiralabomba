@@ -4,5 +4,13 @@
       Contacto
     %hr
     %p
-      ¿Dudas? ¿Sugerencias? Completá el formulario o escribinos a bomba@tiralabomba.com
+      ¿Dudas? ¿Sugerencias? Completá el formulario o escribinos a 
+      = link_to "bomba@tiralabomba.com", "mailto:bomba@tiralabomba.com"
+    %p
       El formulario tiene que tener Dirección de correo (no se mostrará) y Mensaje.
+    %hr
+    %p
+      - form_tag '/create_contact', :method => 'post' do
+        = email_field_tag :email, :placeholder => 'email (opcional)', :class => "form-control embossed-light"
+        = text_area_tag :content,  :class => "form-control embossed-light",:rows=>"3", :placeholder => "tu comentario"
+        %button{:type=>"submit", :class=>"button btn btn-info pull-right"} Enviar

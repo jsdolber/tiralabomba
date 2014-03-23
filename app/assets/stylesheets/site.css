@@ -40,13 +40,34 @@ body {
   padding: 0 15px;
 }
 
-.container .text-muted {
+#footer .container {
+  color:#bbb;
+}
+
+#footer .container .text-muted {
+  margin: 20px 0;
+  opacity: .75;
+}
+
+#footer .container .bottom-nav {
   margin: 20px 0;
 }
 
-.bottom-nav {
-  margin: 20px 0;
+#footer .container .social-links {
+  margin: 10px 0;
+  font-size: 200%;
 }
+
+#footer .container .social-links a {
+  color:inherit;
+}
+
+#footer .container .social-links a:hover {
+  text-decoration: none;
+}
+
+.bottom-nav a {color:#bbb;}
+.bottom-nav a:hover {color:#428bca;}
 
 #main {
 	padding-top: 30px;

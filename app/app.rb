@@ -13,8 +13,8 @@ module Tiralabomba
     ##
     # Caching support.
     #
-    # register Padrino::Cache
-    # enable :caching
+    register Padrino::Cache
+    enable :caching
     #
     # You can customize caching store engines:
     #
@@ -112,19 +112,34 @@ module Tiralabomba
       end
     end
 
-    get :who do
+    post :create_contact do
+      p = Contact.new
+      p.email = params[:email]
+      p.content = params[:content]
+
+      if !p.save
+        flash[:notice] = '!' + p.errors.messages[:content].first
+      else
+        flash[:notice] = 'gracias!'
+      end
+      
+      redirect url('/contact')
+
+    end
+
+    get :who, :cache => true do
       render "who"
     end
 
-    get :privacy do
+    get :privacy, :cache => true do
       render "privacy"
     end
 
-    get :contact do
+    get :contact, :cache => true do
       render "contact"
     end
 
-    get :terms do
+    get :terms, :cache => true do
       render "terms"
     end
     
