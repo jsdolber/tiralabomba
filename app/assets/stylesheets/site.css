@@ -24,9 +24,9 @@ body {
   opacity:0.75;
 }
 
-.central-row {padding-right: 15px;padding-left: 15px;}
+.central-row {padding-right: 25px;padding-left: 15px;}
 
-@media (max-width: 1024px) { 
+@media (max-width: 1200px) { 
   .addthis_toolbox {display:none;}
 }
 

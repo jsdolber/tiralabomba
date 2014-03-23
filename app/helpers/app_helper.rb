@@ -22,6 +22,6 @@ class AppHelper
   end
 
   def self.text_for_input_placeholder
-    ['Tirala', 'Sacate las ganas', 'Dale ahora', 'Encendé la mecha. Dale!', 'Rompe todo'].sample
+    ['Tirala', 'Sacate las ganas', 'Dale ahora', 'Dale!', 'Rompe todo'].sample
   end
 end
