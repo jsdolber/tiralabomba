@@ -9,7 +9,8 @@ class Post
 
   timestamps!
 
-  validates_length_of :content, :within => 10..500, :too_long => "tu mensaje tiene que ser mas corto", :too_short => "tu mensaje tiene que ser mas largo"  
+  validates_length_of :content, :within => 10..500, :too_long => "tu mensaje tiene que ser mas corto (maximo 500)", 
+                                                      :too_short => "tu mensaje tiene que ser mas largo (minimo 10)"  
   #validate :throttle_interval
 
   def vote_avg

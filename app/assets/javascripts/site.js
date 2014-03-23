@@ -3,16 +3,23 @@ $(document).ready(function() {
     var text_max = 500;
 
     $('#dropit_count').html(text_max);
+    $(".btn-create").toggleClass('disabled');
 
     $('#dropit_input').keyup(function() {
         var text_length = $('#dropit_input').val().length;
         var text_remaining = text_max - text_length;
 
         if (text_remaining < 0)
+        {
+            $(".btn-create").addClass('disabled');
             $("#dropit_count").css('color', 'red');
+        }            
         else
-            $("#dropit_count").css('color', 'inherit');
-
+        {
+            $(".btn-create").removeClass('disabled');
+            $("#dropit_count").css('color', '#999');
+        }
+            
         $('#dropit_count').html(text_remaining);
     });
 
