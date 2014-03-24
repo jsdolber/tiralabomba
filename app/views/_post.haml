@@ -6,7 +6,7 @@
     %div.row.post-content
       = simple_format(post.content)
     %div.row.voting
-      .col-md-6{:style => "text-align:left;padding-top:7px"}
+      .col-md-6.votes
         %i.glyphicon.glyphicon-fire.vote{:id => 0, :style => (post.vote_avg.to_f > 1 ? "color:red" : "color:inherit")}
         %i.glyphicon.glyphicon-fire.vote{:id => 1, :style => (post.vote_avg.to_f > 2 ? "color:red" : "color:inherit")}
         %i.glyphicon.glyphicon-fire.vote{:id => 2, :style => (post.vote_avg.to_f > 3 ? "color:red" : "color:inherit")}
