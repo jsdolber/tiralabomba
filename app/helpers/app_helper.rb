@@ -4,11 +4,11 @@ class AppHelper
   "https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ftiralabomba.com/show/#{post_id}"
   end
 
-  def self.href_for_twitter_share(post_id)
-    "https://twitter.com/share?url=http%3A%2F%2Ftiralabomba.com/show/#{post_id}"
+  def self.href_for_twitter_share(post_id, content)
+    "https://twitter.com/share?url=http%3A%2F%2Ftiralabomba.com/show/#{post_id}&text=#{content}"
   end
 
-  def self.href_for_gplus_share(post_id)
+  def self.href_for_gplus_share(post_id, content)
     "https://plus.google.com/share?url=http%3A%2F%2Ftiralabomba.com/show/#{post_id}"
   end
 
