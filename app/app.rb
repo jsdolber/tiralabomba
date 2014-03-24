@@ -132,9 +132,9 @@ module Tiralabomba
 
     end
 
-    get :who, :cache => true do
-      render "who"
-    end
+    # get :who, :cache => true do
+    #   render "who"
+    # end
 
     get :privacy, :cache => true do
       render "privacy"
