@@ -19,6 +19,8 @@ $(document).ready(function() {
             $(".btn-create").removeClass('disabled');
             $("#dropit_count").css('color', '#999');
         }
+
+        if (text_length == 0) { $(".btn-create").addClass('disabled'); };
             
         $('#dropit_count').html(text_remaining);
     });
