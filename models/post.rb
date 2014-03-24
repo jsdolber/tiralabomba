@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Post
   include MongoMapper::Document
   many :votes
@@ -9,8 +10,8 @@ class Post
 
   timestamps!
 
-  validates_length_of :content, :within => 10..500, :too_long => "tu mensaje tiene que ser mas corto (maximo 500)", 
-                                                      :too_short => "tu mensaje tiene que ser mas largo (minimo 10)"  
+  validates_length_of :content, :within => 10..500, :too_long => "tu mensaje tiene que ser más corto (máximo 500)", 
+                                                      :too_short => "tu mensaje tiene que ser más largo (mínimo 10)"  
   #validate :throttle_interval
   validate :validate_content_line_breaks
 
@@ -54,13 +55,13 @@ class Post
       minute_diff = (Time.now - last_post.created_at) / 60
 
       if minute_diff < 1 && self.new?
-        errors.add( :content, "espera un poco para postear de nuevo")
+        errors.add( :content, "esperá un poco para postear de nuevo")
       end  
     end  
   end
 
   def validate_content_line_breaks
     line_break_cnt = content.count 13.chr
-    errors.add( :content, "el mensaje es invalido, proba con menos cortes.") if line_break_cnt > 8
+    errors.add( :content, "el mensaje es inválido, probá con menos cortes.") if line_break_cnt > 8
   end
 end

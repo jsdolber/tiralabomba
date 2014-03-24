@@ -1,3 +1,4 @@
+# encoding: utf-8
 class AppHelper
   def self.href_for_facebook_share(post_id)
   "https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ftiralabomba.com/show/#{post_id}"
@@ -22,6 +23,6 @@ class AppHelper
   end
 
   def self.text_for_input_placeholder
-    ['Tirala', 'Sacate las ganas', 'Dale ahora', 'Dale!', 'Rompe todo'].sample
+    ['Tirala', 'Sacate las ganas', 'Dale ahora', 'Dale!', 'Rompé todo', 'Encendé la mecha'].sample
   end
 end
