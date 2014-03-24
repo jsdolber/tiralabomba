@@ -93,7 +93,7 @@ module Tiralabomba
 
     post :create_post do
       p = Post.new
-      p.content = params[:content]
+      p.content = strip_tags(params[:content])
       p.user_id = Post.get_user_id_from_request(request)
 
       if !p.save

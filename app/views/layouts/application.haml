@@ -40,11 +40,13 @@
           %p.bottom-nav.pull-left
             = link_to "Privacidad", url_for(:privacy)
             |
-            / = link_to "Quienes Somos", url_for(:who)
-            / |
-            = link_to "Términos y Condiciones", url_for(:terms)            
+            = link_to "Términos", url_for(:terms)            
             |
             = link_to "Contacto", url_for(:contact)
+            |
+            = link_to "RSS", url_for('/rss')
+            / = link_to "Quienes Somos", url_for(:who)
+            / |
         .col-md-2
           %p.social-links
             %a{:href => 'http://twitter.com/tiralabombaa'}
