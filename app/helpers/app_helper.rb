@@ -8,7 +8,7 @@ class AppHelper
     "https://twitter.com/share?url=http%3A%2F%2Ftiralabomba.com/show/#{post_id}&text=#{content}"
   end
 
-  def self.href_for_gplus_share(post_id, content)
+  def self.href_for_gplus_share(post_id)
     "https://plus.google.com/share?url=http%3A%2F%2Ftiralabomba.com/show/#{post_id}"
   end
 
