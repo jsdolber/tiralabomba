@@ -28,11 +28,17 @@ body {
 
 @media (max-width: 1200px) { 
   .addthis_toolbox {display:none;}
-  .col-md-2.title {display: none;}
   .bottom-nav {display: none;}
   .social-links {text-align: center;}
   .copyleft {text-align: center;}
   .post-content {padding-right: 15px;}
+}
+
+@media (max-width: 320px) {
+  .col-md-2.title {display: none;}
+  .post-content {padding-left: 15px;}
+  .post-content p { word-break: break-all;}
+  .voting {padding-left: 15px;}
 }
 
 /* Custom page CSS
@@ -114,7 +120,7 @@ body { background-position: initial initial; background-repeat: initial initial;
 }*/
 
 .post-content {padding-left:15px;}
-.post-content p {font-family: 'PT Sans Narrow', sans-serif; font-size:17px}
+.post-content p {font-family: 'PT Sans Narrow', sans-serif; font-size:17px; }
 #dropit_input {font-family: 'PT Sans Narrow', sans-serif; font-size:16.5px; border: none;}
 
 .post-time {margin-bottom:10px;margin-right:40px;font-size:70%;}
