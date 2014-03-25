@@ -96,7 +96,7 @@ body { background-position: initial initial; background-repeat: initial initial;
 
 .col-md-2.title {color:white; padding-right:25px; text-align: left; }
 .title img {margin: 20px 20px; cursor: pointer}
-.title-text {font-family: 'PT Sans Narrow', sans-serif; font-size:17px; color:#aaa; margin-left: 1px}
+.title-text {font-family: 'PT Sans Narrow', sans-serif; font-size:17px; color:#666; margin-left: 1px}
 /*.extruded {
     color: #888;
     font-family: proxima-nova-1, proxima-nova-2, 'Helvetica Neue', Arial, sans-serif; /* the original site doesn't use the @font-face attribute */
