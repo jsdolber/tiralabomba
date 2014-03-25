@@ -13,13 +13,13 @@
         %i.glyphicon.glyphicon-fire.vote{:id => 3, :style => (post.vote_avg.to_f > 4 ? "color:red" : "color:inherit")}
         %i.glyphicon.glyphicon-fire.vote{:id => 4, :style => (post.vote_avg.to_f > 5 ? "color:red" : "color:inherit")}
       .col-md-5.social-icons.pull-right{:style => "text-align:right"}
-        %a{:href => AppHelper.href_for_facebook_share(post.id)}
+        %a{:href => AppHelper.href_for_facebook_share(post.id), :target => '_blank'}
           %i.fa.fa-facebook-square
-        %a{:href => AppHelper.href_for_twitter_share(post.id)}
+        %a{:href => AppHelper.href_for_twitter_share(post.id, truncate_words(post.content, :length => 12)), :target => '_blank'}
           %i.fa.fa-twitter-square
-        %a{:href => AppHelper.href_for_gplus_share(post.id)}
+        %a{:href => AppHelper.href_for_gplus_share(post.id), :target => '_blank'}
           %i.fa.fa-google-plus-square
-        %a{:href => AppHelper.href_for_email_share(post.id)}
+        %a{:href => AppHelper.href_for_email_share(post.id), :target => '_blank'}
           %i.fa.fa-envelope
     %div.separator
       %hr
