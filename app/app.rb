@@ -1,3 +1,4 @@
+# encoding: utf-8
 module Tiralabomba
   class App < Padrino::Application
     register Padrino::Rendering
@@ -83,6 +84,12 @@ module Tiralabomba
     get :show, :with => :id do
       @post = Post.find_by_id(params[:id])
       redirect url('/') if @post.nil?
+
+      #metadata
+      @title = truncate_words(@post.content, :length => 12)
+      @description = @post.content
+      @url = uri url_for(:show, :id => params[:id])
+
       render "show"
     end
 
@@ -137,14 +144,26 @@ module Tiralabomba
     # end
 
     get :privacy, :cache => true do
+
+      #metadata
+      @title = 'Privacidad'
+
       render "privacy"
     end
 
     get :contact, :cache => true do
+
+      #metadata
+      @title = 'Contacto'
+
       render "contact"
     end
 
     get :terms, :cache => true do
+
+      #metadata
+      @title = 'Términos y Condiciones'
+
       render "terms"
     end
     

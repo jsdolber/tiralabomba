@@ -13,14 +13,19 @@
     %script{:src => "//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"}      
     %script{:src => "/assets/application.js"}
     %meta{:name=>'viewport', :content=> 'width=device-width, initial-scale=1.0'}
-    %meta{:name=>'description', :content=> 'Todo lo que no podias decir. Hasta ahora.'}
+    %meta{:name=>'description', :content=> @description || 'Todo lo que no podias decir. Hasta ahora.'}
     %meta{:name=>'keywords', :content=> 'tiralabomba, gossip, chismes.'}
     / facebook
-    %meta{:name=>'og:title', :content=> 'Tira La Bomba'}
+    %meta{:name=>'og:title', :content=>  [@title, "Tira La Bomba"].compact.join(" | ")}
     %meta{:name=>'og:site_name', :content=> 'Tira La Bomba'}
-    %meta{:name=>'og:url', :content=> 'http://tiralabomba.com'}
-    %meta{:name=>'og:description', :content=> 'Todo lo que no podias decir. Hasta ahora.'}
-    %meta{:name=>'og:image', :content=> image_tag('/assets/b.png') }
+    %meta{:name=>'og:url', :content=> @url || 'http://tiralabomba.com'}
+    %meta{:name=>'og:description', :content=> @description || 'Todo lo que no podias decir. Hasta ahora.'}
+    %meta{:name=>'og:image', :content=> url_for('/assets/b.png') }
+    / twitter
+    %meta{:name=>'twitter:title', :content=>  [@title, "Tira La Bomba"].compact.join(" | ")}
+    %meta{:name=>'twitter:url', :content=> @url || 'http://tiralabomba.com'}
+    %meta{:name=>'twitter:description', :content=> @description || 'Todo lo que no podias decir. Hasta ahora.'}
+    %meta{:name=>'twitter:image', :content=> url_for('/assets/b.png') }
   %body
     #wrap
       .container
