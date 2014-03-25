@@ -25,4 +25,12 @@ class AppHelper
   def self.text_for_input_placeholder
     ['Tirala', 'Sacate las ganas', 'Dale ahora', 'Dale!', 'Rompé todo', 'Encendé la mecha'].sample
   end
+
+  def self.is_disqus_link_displayed(url)
+    if url.include? "/show"
+      "display:none;"
+    else
+      "display:inline;"
+    end
+  end
 end

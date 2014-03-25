@@ -141,6 +141,8 @@ p.copyleft {color:#333;}
 
 .voting {cursor:pointer;}
 .votes {padding-left: 0px;text-align:left;padding-top:7px}
+.disqus a {color:#ccc;}
+.disqus a:hover {color:#333;}
 
 .flash-notice {color:white;}
 

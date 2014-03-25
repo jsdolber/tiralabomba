@@ -6,13 +6,16 @@
     %div.row.post-content
       = simple_format(post.content)
     %div.row.voting
-      .col-md-6.votes
+      .col-md-4.votes
         %i.glyphicon.glyphicon-fire.vote{:id => 0, :style => (post.vote_avg.to_f > 1 ? "color:red" : "color:inherit")}
         %i.glyphicon.glyphicon-fire.vote{:id => 1, :style => (post.vote_avg.to_f > 2 ? "color:red" : "color:inherit")}
         %i.glyphicon.glyphicon-fire.vote{:id => 2, :style => (post.vote_avg.to_f > 3 ? "color:red" : "color:inherit")}
         %i.glyphicon.glyphicon-fire.vote{:id => 3, :style => (post.vote_avg.to_f > 4 ? "color:red" : "color:inherit")}
         %i.glyphicon.glyphicon-fire.vote{:id => 4, :style => (post.vote_avg.to_f > 5 ? "color:red" : "color:inherit")}
-      .col-md-5.social-icons.pull-right{:style => "text-align:right"}
+      .col-md-3.disqus{ :style => AppHelper.is_disqus_link_displayed(request.url)}
+        %a{:href => "/show/#{post.id}#disqus_thread"}
+          dejar un comentario      
+      .col-md-4.social-icons.pull-right{:style => "text-align:right"}
         %a{:href => AppHelper.href_for_facebook_share(post.id), :target => '_blank'}
           %i.fa.fa-facebook-square
         %a{:href => AppHelper.href_for_twitter_share(post.id, truncate_words(post.content, :length => 12)), :target => '_blank'}
