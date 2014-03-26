@@ -86,7 +86,7 @@ module Tiralabomba
       redirect url('/') if @post.nil?
 
       #metadata
-      @title = truncate_words(@post.content, :length => 12)
+      @title = truncate_words(@post.content, :length => 8)
       @description = @post.content
       @url = uri url_for(:show, :id => params[:id])
 
