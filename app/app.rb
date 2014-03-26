@@ -93,7 +93,7 @@ module Tiralabomba
       render "show"
     end
 
-    get '/rss' do
+    get '/rss', :provides => [:rss] do
       @posts = Post.get_page_results(0)
       builder :rss
     end
