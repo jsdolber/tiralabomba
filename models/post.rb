@@ -12,7 +12,7 @@ class Post
 
   validates_length_of :content, :within => 10..500, :too_long => "tu mensaje tiene que ser más corto (máximo 500)", 
                                                       :too_short => "tu mensaje tiene que ser más largo (mínimo 10)"  
-  #validate :throttle_interval
+  validate :throttle_interval
   validate :validate_content_line_breaks
 
   def vote_avg
