@@ -104,7 +104,7 @@ module Tiralabomba
       p.user_id = Post.get_user_id_from_request(request)
 
       if !p.save
-        flash[:notice] = '!' + p.errors.messages[:content].first
+        flash[:notice] = '! ' + p.errors.messages[:content].first
       end
       
       redirect url('/')

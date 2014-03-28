@@ -25,6 +25,18 @@ $(document).ready(function() {
         $('#dropit_count').html(text_remaining);
     });
 
+    $("#dropit_input").focus(function() {
+        $(this).animate({
+            height: 84
+        }, "normal");
+    }).blur(function() {
+        if ($("#dropit_input").val().length == 0) {
+            $(this).animate({
+                height: 36
+            }, "normal");
+        };
+    });
+
     $(".btn-create").html('<i class="glyphicon glyphicon-fire" ></i>&nbspBoom');
 
     $('.vote').click(function(){

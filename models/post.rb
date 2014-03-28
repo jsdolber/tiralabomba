@@ -10,8 +10,8 @@ class Post
 
   timestamps!
 
-  validates_length_of :content, :within => 10..500, :too_long => "tu mensaje tiene que ser más corto (máximo 500)", 
-                                                      :too_short => "tu mensaje tiene que ser más largo (mínimo 10)"  
+  validates_length_of :content, :within => 30..500, :too_long => "tu mensaje tiene que ser más corto (máximo 500)", 
+                                                      :too_short => "tu mensaje tiene que ser más largo (mínimo 30)"  
   validate :throttle_interval
   validate :validate_content_line_breaks
 

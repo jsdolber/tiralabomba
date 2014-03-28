@@ -1,4 +1,4 @@
 - form_tag '/create_post', :method => 'post' do
-  = text_area_tag :content,  :class => "form-control embossed-light",:rows=>"3", :placeholder => AppHelper.text_for_input_placeholder, :id => "dropit_input" 
+  = text_area_tag :content,  :class => "form-control embossed-light",:rows=>"1", :placeholder => AppHelper.text_for_input_placeholder, :id => "dropit_input" 
   %span.text-muted{:id => "dropit_count"} 0
   %button{:type=>"submit", :class=>"button btn btn-danger btn-create pull-right"}
