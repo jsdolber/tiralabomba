@@ -39,11 +39,20 @@ class Post
   end
 
   def self.get_popular_page_results(page_num)
-      Post.paginate({
+      #cache
+      pop = Padrino.cache.get('populars-#{page_num}')
+      
+      if pop.nil?
+          pop = Post.paginate({
                   :order    => :stored_avg.desc,
                   :per_page => 10, 
                   :page     => page_num,
                })
+
+          Padrino.cache.set('populars-#{page_num}', pop, :expires_in => (60*5))
+      end
+
+      pop
   end
 
   # checks if the user hasn't posted in the last minute
