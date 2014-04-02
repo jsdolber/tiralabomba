@@ -18,8 +18,8 @@ class AppHelper
 
   def self.label_style_for_post(created_at)
     minute_diff = (Time.now - created_at) / 60
-    return "label-danger" if minute_diff < 5
-    "label-default"
+    return "label-danger" if minute_diff < 15
+    "no-display"
   end
 
   def self.text_for_input_placeholder

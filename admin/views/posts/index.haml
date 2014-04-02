@@ -41,7 +41,7 @@
             =check_box_tag 'post_ids[]', :value => post.id, :class => 'list-selectable-checkbox'
           %td.list-column=post.content
           %td.list-column=post.last_voted
-          %td.list-column=post.user_id
+          /%td.list-column=post.user_id
           %td.list-column=post.stored_avg
           %td.list-column=time_ago_in_words post.created_at
           %td.list-column=time_ago_in_words post.updated_at

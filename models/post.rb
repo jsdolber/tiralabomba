@@ -63,7 +63,7 @@ class Post
     unless last_post.nil?
       minute_diff = (Time.now - last_post.created_at) / 60
 
-      if minute_diff < 1 && self.new?
+      if minute_diff < 0.3 && self.new?
         errors.add( :content, "esperá un poco para postear de nuevo")
       end  
     end  
