@@ -7,6 +7,12 @@ body {
   /* The html and body elements cannot have any padding or margin. */
 }
 
+.mobile-title {display: none}
+
+#main {
+  padding-top: 30px;
+}
+
 /* Wrapper for page content to push down footer */
 #wrap {
   min-height: 100%;
@@ -37,8 +43,11 @@ body {
 @media (max-width: 320px) {
   .col-md-2.title {display: none;}
   .post-content {padding-left: 15px;}
-  .post-content p { word-break: break-all;}
+  .post-content p { word-break: word-break; padding:5px;}
   .voting {padding-left: 15px;}
+  .votes {display: none;}
+  .mobile-title {display: block; text-align: center;}
+  #main {padding-top:0px;}
 }
 
 /* Custom page CSS
@@ -80,9 +89,6 @@ body {
 .bottom-nav a {color:#bbb;}
 .bottom-nav a:hover {color:#428bca;}
 
-#main {
-	padding-top: 30px;
-}
 
 .btn {
 	margin-top:5px;

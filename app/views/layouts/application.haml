@@ -45,7 +45,9 @@
             %script
               var addthis_config = {"data_track_addressbar":true};
             %script{:src => "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5300db5b235e4b60"}
-          .col-md-10            
+          .col-md-10
+            .row.mobile-title
+              = image_tag('/assets/b.png')            
             #main= yield
     #footer
       .container
