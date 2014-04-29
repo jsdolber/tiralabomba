@@ -7,11 +7,13 @@
     %link{:href => "http://fonts.googleapis.com/css?family=PT+Sans+Narrow", :rel => "stylesheet"}
     %link{:href => "/assets/reset.css", :rel => "stylesheet"}
     %link{:href => "/assets/application.css", :rel => "stylesheet"}
+    %link{:href => "/assets/bootstrap-multiselect.css", :rel => "stylesheet"}
     / = stylesheet_link_tag 'stylesheets/reset', 'application'
     / = javascript_include_tag 'javascripts/jquery', 'application'
     %script{:src => "/assets/jquery.js"}
     %script{:src => "//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"}      
     %script{:src => "/assets/application.js"}
+    %script{:src => "/assets/bootstrap-multiselect.js"}
     %meta{:name=>'viewport', :content=> 'width=device-width, initial-scale=1.0'}
     %meta{:name=>'description', :content=> @description || 'Todo lo que no podias decir. Hasta ahora.'}
     %meta{:name=>'keywords', :content=> 'tiralabomba, secreto, confesion, confesiones, gossip, denuncia.'}
@@ -46,45 +48,13 @@
               %div.title-text
                 TIRALABOMBA   
             .row.categories
-              .list-group
-                %a.list-group-item{:href => '/'}
-                  :escaped
-                    #todos
-                %a.list-group-item{:href => '/?c=p', :id => 'p'}
-                  :escaped
-                    #parejas
-                %a.list-group-item{:href => '/?c=a', :id => 'a'}
-                  :escaped
-                    #amigos
-                %a.list-group-item{:href => '/?c=po', :id => 'po'}
-                  :escaped
-                    #politica
-                %a.list-group-item{:href => '/?c=s', :id => 's'}
-                  :escaped
-                    #sexo
-                %a.list-group-item{:href => '/?c=t', :id => 't'}
-                  :escaped
-                    #trabajo
-                %a.list-group-item{:href => '/?c=f', :id => 'f'}
-                  :escaped
-                    #familia
+              = partial 'categories'
           .col-md-7
             .row.mobile-title
               = image_tag('/assets/b.png')            
             #main= yield
           .col-md-3
-            - if defined? @tweets
-              .row.twitter
-                .panel.panel-default
-                  .panel-heading
-                    %h3.panel-title
-                      %i.glyphicon.glyphicon-chevron-right
-                      EN TWITTER
-                  .panel-body
-                    = partial 'tweet', :collection => @tweets
-                    %div
-                      %a.twitter-follow-button{:href=>"https://twitter.com/tiralabombaaa", "data-show-count"=>"true", "data-lang"=>"es"}
-                        Seguir a @tiralabombaaa
+            = partial 'sidebar', :object => @tweets
     #footer
       .container
         .col-md-6

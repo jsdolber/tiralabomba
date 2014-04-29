@@ -26,6 +26,15 @@ class Post
     0
   end
 
+  def set_categories(raw_categories)
+    raw_categories.split(",").each do |cat|
+       if cat.length > 0
+         c = Category.find_by_short_name(cat)
+         self.categories << c unless c.nil?
+       end
+    end
+  end
+
   def self.get_page_for_category(short_name, page_num)
     c = Category.find_by_short_name(short_name)
     Post.where(:category_ids => c.id).paginate({

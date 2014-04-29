@@ -137,6 +137,8 @@ body { background-position: initial initial; background-repeat: initial initial;
 #dropit_input {font-family: 'PT Sans Narrow', sans-serif; font-size:16.5px; border: none;}
 
 .post-time {margin-bottom:10px;margin-right:40px;font-size:70%;}
+.post-bar {padding-right: 10px;}
+button.multiselect {color:#d2322d!important;}
 
 p.copyleft {color:#333;}
 
@@ -154,8 +156,10 @@ p.copyleft {color:#333;}
 
 .voting {cursor:pointer;}
 .votes {padding-left: 0px;text-align:left;padding-top:7px}
+.disqus {margin-top: 5px;}
 .disqus a {color:#ccc;}
 .disqus a:hover {color:#333;}
+.categories-row {margin-bottom: 5px;text-align: right;margin-right: 20px;}
 
 .flash-notice {color:#555;text-align: center;}
 

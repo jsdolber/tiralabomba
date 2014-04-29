@@ -38,6 +38,10 @@ gem 'builder'
 
 gem 'twitter'
 
+group :development, :test do
+  gem 'debugger'
+end
+
 # Or Padrino Edge
 # gem 'padrino', :github => 'padrino/padrino-framework'
 

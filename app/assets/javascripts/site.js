@@ -64,6 +64,7 @@ $(document).ready(function() {
         $(this).animate({
             height: 84
         }, "normal");
+
     }).blur(function() {
         if ($("#dropit_input").val().length == 0) {
             $(this).animate({
@@ -133,6 +134,21 @@ $(document).ready(function() {
     else {
       $(".categories a#" + category).first().addClass('active');
     }
+
+    $('.multiselect').multiselect({buttonClass: 'btn btn-link', 
+                                    nonSelectedText: 'agregar tags',
+                                    numberDisplayed: 2,
+                                    nSelectedText: 'seleccionados',
+                                    onChange: function(element, checked) {
+                                    if(checked == true) {
+                                      // action taken here if true
+                                      $("#categories").val($("#categories").val() + "," + element.val());
+                                    }
+                                    else {
+                                        $("#categories").val($("#categories").val().replace(element.val(), ""));
+                                    }                             
+                                  }
+                              });
 });
 
 function getUrlVars()

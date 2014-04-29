@@ -1,0 +1,7 @@
+.list-group
+  %a.list-group-item{:href => '/'}
+    :escaped
+      #todos
+  - Category.all(:order => :order.desc).each do |c|
+    %a.list-group-item{:href => "/?c=#{c.short_name}", :id => c.short_name}
+      ='#' + c.name

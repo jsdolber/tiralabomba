@@ -79,8 +79,9 @@ module Tiralabomba
       @post = Post.new
       @posts = @filter == 'n'? Post.get_page_results(@page) : Post.get_popular_page_results(@page) if @category.nil?
       @posts = Post.get_page_for_category(@category, @page) if @posts.nil? && !@category.nil?
+      @posts = [] if @posts.nil?
 
-      @tweets = AppHelper.get_twitter_posts
+      #@tweets = AppHelper.get_twitter_posts
 
       render "index"
     end
@@ -106,6 +107,7 @@ module Tiralabomba
       p = Post.new
       p.content = strip_tags(params[:content])
       p.user_id = Post.get_user_id_from_request(request)
+      p.set_categories(params[:categories])      
 
       if !p.save
         flash[:notice] = '! ' + p.errors.messages[:content].first
