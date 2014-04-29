@@ -2,11 +2,14 @@
 class Post
   include MongoMapper::Document
   many :votes
+  
   # key <name>, <type>
   key :content, String
   key :last_voted, Date
   key :user_id, String
   key :stored_avg, Integer
+  key :category_ids, Array
+  many :categories, :in => :category_ids
 
   timestamps!
 
@@ -21,6 +24,15 @@ class Post
     return (total_rating / votes.count) if votes.count > 0
     return votes.first.rating if votes.count == 1
     0
+  end
+
+  def self.get_page_for_category(short_name, page_num)
+    c = Category.find_by_short_name(short_name)
+    Post.where(:category_ids => c.id).paginate({
+                  :order    => :created_at.desc,
+                  :per_page => 10, 
+                  :page     => page_num,
+                }) unless c.nil?
   end
 
   def self.get_user_id_from_request(request)

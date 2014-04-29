@@ -36,6 +36,8 @@ gem 'redis'
 
 gem 'builder'
 
+gem 'twitter'
+
 # Or Padrino Edge
 # gem 'padrino', :github => 'padrino/padrino-framework'
 

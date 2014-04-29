@@ -57,8 +57,8 @@ body {
 
 .container {
   width: auto;
-  max-width: 1024px;
-  padding: 0 15px;
+  /*max-width: 1024px;*/
+  padding: 0 100px;
 }
 
 #footer .container {
@@ -101,9 +101,15 @@ body {
 body { background-image: url('/assets/bckg.png'); }
 body { background-position: initial initial; background-repeat: initial initial; }
 
-.col-md-2.title {color:white; padding-right:25px; text-align: left; }
-.title img {margin: 20px 20px; cursor: pointer}
-.title-text {font-family: 'PT Sans Narrow', sans-serif; font-size:17px; color:#666; margin-left: 1px}
+.twitter {margin-top: 30px;}
+.panel-title {color:#d2322d;}
+
+.title {color:white; text-align: center; }
+.title img {margin: 20px 0px; width:50px; height:50px; cursor: pointer}
+.title-text {font-family: 'PT Sans Narrow', sans-serif; font-size:20px; color:#666; margin-left: 1px}
+.categories {width: 80%; text-align: center;margin: 0 auto;font-size: 120%; margin-top: 105px;}
+.categories a.active {background-color: #d2322d; border-color: #d2322d;}
+.categories a.active:hover {background-color: #d2322d; border-color: #d2322d;}
 /*.extruded {
     color: #888;
     font-family: proxima-nova-1, proxima-nova-2, 'Helvetica Neue', Arial, sans-serif; /* the original site doesn't use the @font-face attribute */
@@ -167,3 +173,9 @@ div[class*="embossed"] {
 .pager a {color:black;}
 
 .no-display {display:none;}
+
+.tweet {padding: 0px 15px;}
+.tweet .label {font-size: 65%;margin-left: 5px;}
+.tweet-text a {color:#d2322d;}
+.link-to-tweet {color:#666;margin-left: 5px;}
+.link-to-tweet:hover {color:#d2322d;}

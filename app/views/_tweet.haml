@@ -1,0 +1,8 @@
+%div.row.tweet
+	%span.tweet-text
+		= tweet.text
+	.label.label-default
+		= time_ago_in_words(tweet.created_at || Time.now)
+	%a.link-to-tweet{:href => tweet.url.to_s, :target => '_blank'}
+		%i.glyphicon.glyphicon-share-alt
+	%hr

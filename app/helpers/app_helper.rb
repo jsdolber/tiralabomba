@@ -33,4 +33,24 @@ class AppHelper
       "display:inline;"
     end
   end
+
+  def self.get_twitter_posts
+
+    tweets = Padrino.cache.get('tweets')
+
+    if tweets.nil?
+      erik = Twitter::REST::Client.new do |config|
+        config.consumer_key = 'bVqypJtXqUiiMH8d6FJd3A01w'
+        config.consumer_secret = 'UNK3wEZ1C5KA1DSrTC0v9smKPkRv2WTBgbZXKg4AcDwV6DiA3G'
+        config.access_token        = '17706291-lYhpVZTIJeUzlI03wpeA7CoCwl1wqyUeha2JZvRoz'
+        config.access_token_secret = 'YxMP10KKSaFujFMlGT4ykHBJ1rS5745CiMUlWgKJ3Y8Wz'
+      end
+
+      tweets = erik.user_timeline("tiralabombaaa")
+
+      Padrino.cache.set('tweets', tweets, :expires_in => (60*5))
+    end
+
+    tweets[0, 10]
+  end
 end

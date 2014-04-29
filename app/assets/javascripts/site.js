@@ -1,4 +1,39 @@
 // Put your application scripts here
+(function($){
+
+  var url1 = /(^|&lt;|\s)(www\..+?\..+?)(\s|&gt;|$)/g,
+      url2 = /(^|&lt;|\s)(((https?|ftp):\/\/|mailto:).+?)(\s|&gt;|$)/g,
+
+      linkifyThis = function () {
+        var childNodes = this.childNodes,
+            i = childNodes.length;
+        while(i--)
+        {
+          var n = childNodes[i];
+          if (n.nodeType == 3) {
+            var html = $.trim(n.nodeValue);
+            if (html)
+            {
+              html = html.replace(/&/g, '&amp;')
+                         .replace(/</g, '&lt;')
+                         .replace(/>/g, '&gt;')
+                         .replace(url1, '$1<a target="_blank" href="http://$2">$2</a>$3')
+                         .replace(url2, '$1<a target="_blank" href="$2">$2</a>$5');
+              $(n).after(html).remove();
+            }
+          }
+          else if (n.nodeType == 1  &&  !/^(a|button|textarea)$/i.test(n.tagName)) {
+            linkifyThis.call(n);
+          }
+        }
+      };
+
+  $.fn.linkify = function () {
+    return this.each(linkifyThis);
+  };
+
+})(jQuery);
+
 $(document).ready(function() {
     var text_max = 500;
 
@@ -58,6 +93,29 @@ $(document).ready(function() {
         });
     });
 
+    var tweetParser = function(){
+        $(".tweet-text").each(function()
+        {
+            var tokens = $(this).text().split(' ');
+
+            for (var i = tokens.length - 1; i >= 0; i--) {
+                var token = tokens[i];
+
+                if (token.indexOf("@") == 0) {
+                    var newToken = '<a href="http://twitter.com/' + token.replace("@", "") + '" target="_blank">' + token + "</a>";
+                    var currentHtml = $(this).html().replace(token, newToken);
+                    $(this).html(currentHtml);
+                };
+
+                if (token.indexOf("#") == 0) {
+                    var newToken = '<a href="http://twitter.com/' + token + '" target="_blank">' + token + "</a>";
+                    var currentHtml = $(this).html().replace(token, newToken);
+                    $(this).html(currentHtml);
+                };
+            };
+        });
+    }
+
     $(".filter-n").click(function(){ location.href = '/?f=n'});
     $(".filter-p").click(function(){ location.href = '/?f=p'});
 
@@ -65,23 +123,27 @@ $(document).ready(function() {
         location.href = '/';
     });
 
-    var toggleTitle = function(){
-            $('.title').toggleClass('extruded-hover');
-        };
+    $(".tweet").linkify();
+    tweetParser();
 
-    $(".title").hover(
-        toggleTitle,
-        toggleTitle
-    );
+    var category = getUrlVars()["c"];
 
-    setInterval(function() {
-        toggleTitle()
-    }, 60000);
-
-        setInterval(function() {
-        toggleTitle()
-    }, 60500);
-    
-
-
+    if (category === undefined || category.length == 0) 
+    { $(".categories a").first().addClass('active'); }
+    else {
+      $(".categories a#" + category).first().addClass('active');
+    }
 });
+
+function getUrlVars()
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}

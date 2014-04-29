@@ -32,11 +32,6 @@
         .row.flash-notice 
           %h3=flash[:notice]
         .row
-          .col-md-2.title
-            .row
-              = image_tag('/assets/b.png')
-            .row.title-text
-              TIRALABOMBA
           %div.addthis_toolbox.addthis_floating_style.addthis_counter_style{:style => "left:10px;top:50px;"}
             %a.addthis_button_facebook_like{":fb:like:layout" => "box_count"}
             %a.addthis_button_tweet{":tw:count" => "vertical"}
@@ -45,10 +40,51 @@
             %script
               var addthis_config = {"data_track_addressbar":true};
             %script{:src => "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5300db5b235e4b60"}
-          .col-md-10
+          .col-md-2.title
+            .row
+              = image_tag('/assets/b.png')
+              %div.title-text
+                TIRALABOMBA   
+            .row.categories
+              .list-group
+                %a.list-group-item{:href => '/'}
+                  :escaped
+                    #todos
+                %a.list-group-item{:href => '/?c=p', :id => 'p'}
+                  :escaped
+                    #parejas
+                %a.list-group-item{:href => '/?c=a', :id => 'a'}
+                  :escaped
+                    #amigos
+                %a.list-group-item{:href => '/?c=po', :id => 'po'}
+                  :escaped
+                    #politica
+                %a.list-group-item{:href => '/?c=s', :id => 's'}
+                  :escaped
+                    #sexo
+                %a.list-group-item{:href => '/?c=t', :id => 't'}
+                  :escaped
+                    #trabajo
+                %a.list-group-item{:href => '/?c=f', :id => 'f'}
+                  :escaped
+                    #familia
+          .col-md-7
             .row.mobile-title
               = image_tag('/assets/b.png')            
             #main= yield
+          .col-md-3
+            - if defined? @tweets
+              .row.twitter
+                .panel.panel-default
+                  .panel-heading
+                    %h3.panel-title
+                      %i.glyphicon.glyphicon-chevron-right
+                      EN TWITTER
+                  .panel-body
+                    = partial 'tweet', :collection => @tweets
+                    %div
+                      %a.twitter-follow-button{:href=>"https://twitter.com/tiralabombaaa", "data-show-count"=>"true", "data-lang"=>"es"}
+                        Seguir a @tiralabombaaa
     #footer
       .container
         .col-md-6
