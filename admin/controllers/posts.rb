@@ -1,7 +1,7 @@
 Tiralabomba::Admin.controllers :posts do
   get :index do
     @title = "Posts"
-    @posts = Post.all
+    @posts = Post.all(:order => :created_at.desc)
     render 'posts/index'
   end
 
@@ -39,6 +39,7 @@ Tiralabomba::Admin.controllers :posts do
     @title = pat(:update_title, :model => "post #{params[:id]}")
     @post = Post.find(params[:id])
     if @post
+      @post.set_categories(params[:post][:categories_in_short_name])
       if @post.update_attributes(params[:post])
         flash[:success] = pat(:update_success, :model => 'Post', :id =>  "#{params[:id]}")
         params[:save_and_continue] ?

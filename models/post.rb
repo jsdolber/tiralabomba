@@ -26,11 +26,18 @@ class Post
     0
   end
 
+  def categories_in_short_name
+    self.categories.map { |c| c.short_name }.join(",")
+  end
+
   def set_categories(raw_categories)
+    self.category_ids.clear #empty whatever there is
     raw_categories.split(",").each do |cat|
        if cat.length > 0
          c = Category.find_by_short_name(cat)
-         self.categories << c unless c.nil?
+         if !c.nil?
+           self.categories << c
+         end
        end
     end
   end
