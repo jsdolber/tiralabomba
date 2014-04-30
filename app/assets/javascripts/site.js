@@ -64,12 +64,13 @@ $(document).ready(function() {
         $(this).animate({
             height: 84
         }, "normal");
-
+        $(".input-tag").show();
     }).blur(function() {
         if ($("#dropit_input").val().length == 0) {
             $(this).animate({
                 height: 36
             }, "normal");
+            $(".input-tag").hide();
         };
     });
 
@@ -149,6 +150,7 @@ $(document).ready(function() {
                                     }                             
                                   }
                               });
+    $(".input-tag").hide();
 });
 
 function getUrlVars()

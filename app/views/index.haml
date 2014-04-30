@@ -1,26 +1,28 @@
-%script{:type=>"text/javascript"}
-  var disqus_shortname = 'tiralabomba'; // required: replace example with your forum shortname
-
-  (function () {
-  var s = document.createElement('script'); s.async = true;
-  s.type = 'text/javascript';
-  s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-  (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-  }());
-%div.row.central-row.create-post
-  = partial 'create_post'
-%div.row.filters
-  %div.btn-group
-    %button.btn.filter-n{:type=> "button", :class => @filter == 'n' ? "active btn-danger" : "btn-default"}
-      Nuevos
-    %button.btn.filter-p{:type=> "button", :class => @filter != 'n' ? "active btn-danger" : "btn-default"}
-      + Votados
-%div.row.central-row
-  %div.jumbotron.post-background
-    = partial 'post', :collection => @posts
-%div.row.central-row
-  %ul.pager
-    %li.previous{:style => (@page.to_i <= 1 ? "display:none;" : "")}
-      %a{:href => "/?f=#{@filter}&p=#{(@page.to_i - 1).to_s}&c=#{@category}"} Siguientes
-    %li.next
-      %a{:href => "/?f=#{@filter}&p=#{(@page.to_i + 1).to_s}&c=#{@category}"} Anteriores
+.col-md-8
+  %script{:type=>"text/javascript"}
+    var disqus_shortname = 'tiralabomba';
+    (function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+  %div.row.central-row.create-post
+    = partial 'create_post'
+  %div.row.filters
+    %div.btn-group
+      %button.btn.filter-n{:type=> "button", :class => @filter == 'n' ? "active btn-danger" : "btn-default"}
+        Nuevos
+      %button.btn.filter-p{:type=> "button", :class => @filter != 'n' ? "active btn-danger" : "btn-default"}
+        + Votados
+  %div.row.central-row
+    %div.jumbotron.post-background
+      = partial 'post', :collection => @posts
+  %div.row.central-row
+    %ul.pager
+      %li.previous{:style => (@page.to_i <= 1 ? "display:none;" : "")}
+        %a{:href => "/?f=#{@filter}&p=#{(@page.to_i - 1).to_s}&c=#{@category}"} Siguientes
+      %li.next
+        %a{:href => "/?f=#{@filter}&p=#{(@page.to_i + 1).to_s}&c=#{@category}"} Anteriores
+.col-md-4
+  = partial 'sidebar', :object => @tweets

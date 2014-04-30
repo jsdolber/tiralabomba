@@ -81,7 +81,7 @@ module Tiralabomba
       @posts = Post.get_page_for_category(@category, @page) if @posts.nil? && !@category.nil?
       @posts = [] if @posts.nil?
 
-      #@tweets = AppHelper.get_twitter_posts
+      @tweets = AppHelper.get_twitter_posts
 
       render "index"
     end

@@ -5,9 +5,10 @@
       %span.text-muted{:id => "dropit_count"} 0
       %input{:type => "hidden", :name => "categories", :id => "categories"}
     .col-md-3
-      %select.multiselect{:multiple => "multiple", :id => "dropit_category", :name => "category"}
-        - Category.all(:order => :order.desc).each do |c|
-          %option{:value => c.short_name, :name => c.short_name}
-            = "#" + c.name
+      .input-tag
+        %select.multiselect{:multiple => "multiple", :id => "dropit_category", :name => "category"}
+          - Category.all(:order => :order.desc).each do |c|
+            %option{:value => c.short_name, :name => c.short_name}
+              = "#" + c.name
     .col-md-2
       %button{:type=>"submit", :class=>"button btn btn-danger btn-create"}

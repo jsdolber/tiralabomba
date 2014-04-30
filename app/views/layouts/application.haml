@@ -8,8 +8,6 @@
     %link{:href => "/assets/reset.css", :rel => "stylesheet"}
     %link{:href => "/assets/application.css", :rel => "stylesheet"}
     %link{:href => "/assets/bootstrap-multiselect.css", :rel => "stylesheet"}
-    / = stylesheet_link_tag 'stylesheets/reset', 'application'
-    / = javascript_include_tag 'javascripts/jquery', 'application'
     %script{:src => "/assets/jquery.js"}
     %script{:src => "//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"}      
     %script{:src => "/assets/application.js"}
@@ -31,7 +29,7 @@
   %body
     #wrap
       .container
-        .row.flash-notice 
+        .row.flash-notice          
           %h3=flash[:notice]
         .row
           %div.addthis_toolbox.addthis_floating_style.addthis_counter_style{:style => "left:10px;top:50px;"}
@@ -46,15 +44,12 @@
             .row
               = image_tag('/assets/b.png')
               %div.title-text
-                TIRALABOMBA   
-            .row.categories
-              = partial 'categories'
-          .col-md-7
-            .row.mobile-title
-              = image_tag('/assets/b.png')            
+                TIRALABOMBA
+            - if request.route_obj.action == :index
+              .row.categories
+                = partial 'categories'
+          .col-md-10         
             #main= yield
-          .col-md-3
-            = partial 'sidebar', :object => @tweets
     #footer
       .container
         .col-md-6
