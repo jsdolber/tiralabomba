@@ -38,6 +38,8 @@ body {
   .social-links {text-align: center;}
   .copyleft {text-align: center;}
   .post-content {padding-right: 15px;}
+  .container {padding:0!important;}
+  .post-bar {padding-right: 25px!important;}
 }
 
 @media (max-width: 320px) {
@@ -49,6 +51,8 @@ body {
   .mobile-title {display: block; text-align: center;}
   #main {padding-top:0px;}
   .create-post {margin-top: 20px;}
+  .twitter {display: none;}
+  .input-tag {text-align: right;margin-top: -30px;}
 }
 
 /* Custom page CSS
