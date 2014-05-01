@@ -107,7 +107,7 @@ body { background-position: initial initial; background-repeat: initial initial;
 
 .panel-title {color:#d2322d;}
 
-.title {color:white; text-align: center; }
+.title {color:white; text-align: center; padding-left: 50px;padding-right: 0px}
 .title img {margin: 20px 0px; width:50px; height:50px; cursor: pointer}
 .title-text {font-family: 'PT Sans Narrow', sans-serif; font-size:20px; color:#666; margin-left: 1px}
 .categories {width: 85%; text-align: center;margin: 0 auto;font-size: 120%; margin-top: 105px;}

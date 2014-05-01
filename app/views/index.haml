@@ -18,6 +18,11 @@
   %div.row.central-row
     %div.jumbotron.post-background
       = partial 'post', :collection => @posts
+      - if @posts.empty?
+        %h3
+          Todavía no hay nada acá
+          %small
+            (por ahora).
   %div.row.central-row
     %ul.pager
       %li.previous{:style => (@page.to_i <= 1 ? "display:none;" : "")}
