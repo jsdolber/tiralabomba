@@ -35,7 +35,7 @@ class AppHelper
   end
 
   def self.get_twitter_posts
-
+    #debugger
     tweets = Padrino.cache.get('tweets')
 
     if tweets.nil?
@@ -48,7 +48,7 @@ class AppHelper
 
       tweets = erik.user_timeline("tiralabombaaa")
 
-      Padrino.cache.set('tweets', tweets, :expires_in => (60*5))
+      Padrino.cache.set('tweets', tweets, :expires_in => (60*10))
     end
 
     tweets[0, 10]

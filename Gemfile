@@ -39,7 +39,7 @@ gem 'builder'
 gem 'twitter'
 
 group :development, :test do
-  #gem 'debugger'
+  gem 'debugger'
 end
 
 # Or Padrino Edge
