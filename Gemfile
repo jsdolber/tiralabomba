@@ -39,8 +39,10 @@ gem 'builder'
 gem 'twitter'
 
 group :development, :test do
-  gem 'debugger'
+  #gem 'debugger'
 end
+
+gem 'newrelic_rpm'
 
 # Or Padrino Edge
 # gem 'padrino', :github => 'padrino/padrino-framework'
