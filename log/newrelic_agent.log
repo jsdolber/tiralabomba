@@ -27,3 +27,32 @@
 [05/08/14 20:34:45 -0400 Sebastians-MacBook-Air.local (2708)] INFO : Installing deferred Rack instrumentation
 [05/08/14 20:34:45 -0400 Sebastians-MacBook-Air.local (2708)] INFO : Finished instrumentation
 [05/08/14 20:34:46 -0400 Sebastians-MacBook-Air.local (2708)] INFO : Doing deferred dependency-detection before Rack startup
+[05/09/14 21:18:39 -0400 Sebastians-MacBook-Air.local (4891)] INFO : Starting the New Relic agent in "development" environment.
+[05/09/14 21:18:39 -0400 Sebastians-MacBook-Air.local (4891)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[05/09/14 21:18:39 -0400 Sebastians-MacBook-Air.local (4891)] INFO : Reading configuration from config/newrelic.yml
+[05/09/14 21:18:39 -0400 Sebastians-MacBook-Air.local (4891)] INFO : Enabling the Request Sampler.
+[05/09/14 21:18:39 -0400 Sebastians-MacBook-Air.local (4891)] INFO : Environment: development
+[05/09/14 21:18:39 -0400 Sebastians-MacBook-Air.local (4891)] INFO : No known dispatcher detected.
+[05/09/14 21:18:39 -0400 Sebastians-MacBook-Air.local (4891)] INFO : Application: My Application
+[05/09/14 21:18:39 -0400 Sebastians-MacBook-Air.local (4891)] WARN : Agent configured not to send data in this environment.
+[05/09/14 21:18:39 -0400 Sebastians-MacBook-Air.local (4891)] INFO : Installing Mongo instrumentation
+[05/09/14 21:18:39 -0400 Sebastians-MacBook-Air.local (4891)] INFO : Installing Net instrumentation
+[05/09/14 21:18:39 -0400 Sebastians-MacBook-Air.local (4891)] INFO : Installing Sinatra instrumentation
+[05/09/14 21:18:39 -0400 Sebastians-MacBook-Air.local (4891)] INFO : Installing Padrino instrumentation
+[05/09/14 21:18:39 -0400 Sebastians-MacBook-Air.local (4891)] INFO : Installing deferred Rack instrumentation
+[05/09/14 21:18:39 -0400 Sebastians-MacBook-Air.local (4891)] INFO : Finished instrumentation
+[05/09/14 21:25:00 -0400 Sebastians-MacBook-Air.local (4961)] INFO : Starting the New Relic agent in "development" environment.
+[05/09/14 21:25:00 -0400 Sebastians-MacBook-Air.local (4961)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[05/09/14 21:25:00 -0400 Sebastians-MacBook-Air.local (4961)] INFO : Reading configuration from config/newrelic.yml
+[05/09/14 21:25:00 -0400 Sebastians-MacBook-Air.local (4961)] INFO : Enabling the Request Sampler.
+[05/09/14 21:25:00 -0400 Sebastians-MacBook-Air.local (4961)] INFO : Environment: development
+[05/09/14 21:25:00 -0400 Sebastians-MacBook-Air.local (4961)] INFO : No known dispatcher detected.
+[05/09/14 21:25:00 -0400 Sebastians-MacBook-Air.local (4961)] INFO : Application: My Application
+[05/09/14 21:25:00 -0400 Sebastians-MacBook-Air.local (4961)] WARN : Agent configured not to send data in this environment.
+[05/09/14 21:25:00 -0400 Sebastians-MacBook-Air.local (4961)] INFO : Installing Mongo instrumentation
+[05/09/14 21:25:00 -0400 Sebastians-MacBook-Air.local (4961)] INFO : Installing Net instrumentation
+[05/09/14 21:25:00 -0400 Sebastians-MacBook-Air.local (4961)] INFO : Installing Sinatra instrumentation
+[05/09/14 21:25:00 -0400 Sebastians-MacBook-Air.local (4961)] INFO : Installing Padrino instrumentation
+[05/09/14 21:25:00 -0400 Sebastians-MacBook-Air.local (4961)] INFO : Installing deferred Rack instrumentation
+[05/09/14 21:25:00 -0400 Sebastians-MacBook-Air.local (4961)] INFO : Finished instrumentation
+[05/09/14 21:25:00 -0400 Sebastians-MacBook-Air.local (4961)] INFO : Doing deferred dependency-detection before Rack startup
