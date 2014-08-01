@@ -59,28 +59,41 @@ class Post
   end
 
   def self.get_page_results(page_num)
-    Post.paginate({
-                  :order    => :created_at.desc,
-                  :per_page => 10, 
-                  :page     => page_num,
-                })
+
+    cached_page = Padrino.cache.get("results-#{page_num}")
+    
+    if cached_page.nil?
+      cached_page = Post.paginate({
+                    :order    => :created_at.desc,
+                    :per_page => 10, 
+                    :page     => page_num,
+                    })
+
+      Padrino.cache.set("results-#{page_num}", cached_page, :expires_in => (60*30))
+    end
+
+    cached_page
   end
 
   def self.get_popular_page_results(page_num)
       #cache
-      pop = Padrino.cache.get('populars-#{page_num}')
+      cached_page = Padrino.cache.get("populars-#{page_num}")
       
-      if pop.nil?
-          pop = Post.paginate({
+      if cached_page.nil?
+          cached_page = Post.paginate({
                   :order    => :stored_avg.desc,
                   :per_page => 10, 
                   :page     => page_num,
                })
 
-          Padrino.cache.set('populars-#{page_num}', pop, :expires_in => (60*5))
+          Padrino.cache.set("populars-#{page_num}", cached_page, :expires_in => (60*30))
       end
 
-      pop
+      cached_page
+  end
+
+  def self.delete_results_cache
+    10.times { |i| Padrino.cache.delete("results-#{i}") }
   end
 
   # checks if the user hasn't posted in the last minute

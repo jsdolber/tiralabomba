@@ -113,6 +113,8 @@ module Tiralabomba
         flash[:notice] = '! ' + p.errors.messages[:content].first
       end
       
+      Post.delete_results_cache
+      
       redirect url('/')
 
     end
