@@ -87,7 +87,8 @@ module Tiralabomba
     end
 
     get :show, :with => :id do
-      @post = Post.find_by_id(params[:id])
+      @post = Post.find_by_friendly_url(params[:id])
+      @post = Post.find_by_id(params[:id]) if @post.nil?
       redirect url('/') if @post.nil?
 
       #metadata
@@ -108,6 +109,7 @@ module Tiralabomba
       p.content = strip_tags(params[:content])
       p.user_id = Post.get_user_id_from_request(request)
       p.set_categories(params[:categories])      
+      p.friendly_url = p.content.split(' ').take(7).join('-').downcase
 
       if !p.save
         flash[:notice] = '! ' + p.errors.messages[:content].first

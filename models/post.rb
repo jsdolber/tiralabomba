@@ -9,6 +9,7 @@ class Post
   key :user_id, String
   key :stored_avg, Integer
   key :category_ids, Array
+  key :friendly_url, String
   many :categories, :in => :category_ids
 
   timestamps!

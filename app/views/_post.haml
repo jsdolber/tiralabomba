@@ -15,7 +15,7 @@
         %i.glyphicon.glyphicon-fire.vote{:id => 3, :style => (post.vote_avg.to_f > 3 ? "color:red" : "color:inherit")}
         %i.glyphicon.glyphicon-fire.vote{:id => 4, :style => (post.vote_avg.to_f > 4 ? "color:red" : "color:inherit")}
       .col-md-4.disqus{ :style => AppHelper.is_disqus_link_displayed(request.url)}
-        %a{:href => "/show/#{post.id}#disqus_thread"}
+        %a{:href => "/show/#{post.friendly_url}#disqus_thread"}
           dejar un comentario      
       .col-md-4.social-icons.pull-right{:style => "text-align:right"}
         %a{:href => AppHelper.href_for_facebook_share(post.id), :target => '_blank'}
