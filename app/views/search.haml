@@ -1,0 +1,16 @@
+.col-md-8
+  %div.row.central-row
+    %h2
+      Resultados para "
+      = @keyword
+      ":
+  %div.row.central-row
+    %div.jumbotron.post-background
+      = partial 'post', :collection => @posts
+      - if @posts.empty?
+        %h3
+          No se encontró nada
+          %small
+            (por ahora).
+.col-md-4
+  = partial 'sidebar', :object => @tweets

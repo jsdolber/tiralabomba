@@ -98,6 +98,10 @@ class Post
     10.times { |i| Padrino.cache.delete("results-#{i}") }
   end
 
+  def self.search(keyword)
+    Post.where(:content => Regexp.new("#{keyword}", true)).all
+  end
+
   # checks if the user hasn't posted in the last minute
   # for new posts only
   def throttle_interval

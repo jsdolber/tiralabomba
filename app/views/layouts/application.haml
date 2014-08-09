@@ -41,13 +41,15 @@
               var addthis_config = {"data_track_addressbar":true};
             %script{:src => "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5300db5b235e4b60"}
           .col-md-2.title
-            .row
+            .row.title
               = image_tag('/assets/b.png')
               %div.title-text
                 TIRALABOMBA
-            - if request.route_obj.action == :index || request.route_obj.action == 'tags'
-              .row.categories
+            - if request.route_obj.action == :index || request.route_obj.action == 'tags' || request.route_obj.action == :search
+              .row.categories.sidebar-item-right
                 = partial 'categories'
+              .row.search.sidebar-item-right
+                = partial 'search'
           .col-md-10         
             #main= yield
     #footer

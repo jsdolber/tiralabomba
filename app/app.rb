@@ -113,6 +113,18 @@ module Tiralabomba
       render "show"
     end
 
+    get :search, :with => :k do
+      @posts = [] 
+
+      @posts = Post.search(params[:k]) unless params[:k].nil?
+
+      @keyword = params[:k]
+      
+      @tweets = AppHelper.get_twitter_posts
+
+      render "search"
+    end
+
     get '/rss', :provides => [:rss] do
       @posts = Post.get_page_results(0)
       builder :rss

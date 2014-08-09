@@ -32,6 +32,17 @@
     return this.each(linkifyThis);
   };
 
+  $.fn.enterKey = function (fnc) {
+    return this.each(function () {
+        $(this).keypress(function (ev) {
+            var keycode = (ev.keyCode ? ev.keyCode : ev.which);
+            if (keycode == '13') {
+                fnc.call(this, ev);
+            }
+        })
+    })
+}
+
 })(jQuery);
 
 $(document).ready(function() {
@@ -121,7 +132,7 @@ $(document).ready(function() {
     $(".filter-n").click(function(){ location.href = '/?f=n'});
     $(".filter-p").click(function(){ location.href = '/?f=p'});
 
-    $(".title").click(function (){
+    $(".row.title").click(function (){
         location.href = '/';
     });
 
@@ -152,6 +163,14 @@ $(document).ready(function() {
                                   }
                               });
     $(".input-tag").hide();
+
+    // search
+    $('#search-text').enterKey(function() { $('.btn-search').click() });
+    $('.btn-search').click(function(){ 
+        var searchEl = $('#search-text');
+
+        if (searchEl.val().length > 0) {};
+        location.href = '/search/' + searchEl.val();  });
 });
 
 function getUrlVars()
