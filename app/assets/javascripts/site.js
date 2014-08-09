@@ -128,13 +128,14 @@ $(document).ready(function() {
     $(".tweet").linkify();
     tweetParser();
 
+    /*
     var category = getUrlVars()["c"];
 
     if (category === undefined || category.length == 0) 
     { $(".categories a").first().addClass('active'); }
     else {
       $(".categories a#" + category).first().addClass('active');
-    }
+    }*/
 
     $('.multiselect').multiselect({buttonClass: 'btn btn-link', 
                                     nonSelectedText: 'agregar tags',

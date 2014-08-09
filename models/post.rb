@@ -43,8 +43,9 @@ class Post
     end
   end
 
-  def self.get_page_for_category(short_name, page_num)
-    c = Category.find_by_short_name(short_name)
+  def self.get_page_for_category(name, page_num)
+    c = Category.find_by_name(name)
+    c = Category.find_by_short_name(name) if c.nil?
     Post.where(:category_ids => c.id).paginate({
                   :order    => :created_at.desc,
                   :per_page => 10, 

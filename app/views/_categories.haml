@@ -2,9 +2,9 @@
   .list-group-item.category-heading
     %i.glyphicon.glyphicon-chevron-right
     TAGS
-  %a.list-group-item{:href => '/'}
+  %a.list-group-item{:href => '/', :class => @category.nil?? "active" : ""}
     :escaped
       #todos
   - Category.all(:order => :order.desc).each do |c|
-    %a.list-group-item{:href => "/?c=#{c.short_name}", :id => c.short_name}
+    %a.list-group-item{:href => "/tags/#{c.name}", :id => c.name, :class => @category == c.name ? "active" : ""}
       ='#' + c.name

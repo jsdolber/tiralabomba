@@ -26,8 +26,14 @@
   %div.row.central-row
     %ul.pager
       %li.previous{:style => (@page.to_i <= 1 ? "display:none;" : "")}
-        %a{:href => "/?f=#{@filter}&p=#{(@page.to_i - 1).to_s}&c=#{@category}"} Siguientes
+        - if @category.nil?
+          %a{:href => "/?f=#{@filter}&p=#{(@page.to_i - 1).to_s}"} Siguientes
+        - else
+          %a{:href => "/tags/#{@category}/?p=#{(@page.to_i - 1).to_s}"} Siguientes
       %li.next
-        %a{:href => "/?f=#{@filter}&p=#{(@page.to_i + 1).to_s}&c=#{@category}"} Anteriores
+        - if @category.nil?
+          %a{:href => "/?f=#{@filter}&p=#{(@page.to_i + 1).to_s}"} Anteriores
+        - else
+          %a{:href => "/tags/#{@category}/?p=#{(@page.to_i + 1).to_s}"} Anteriores
 .col-md-4
   = partial 'sidebar', :object => @tweets

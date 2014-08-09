@@ -73,14 +73,28 @@ module Tiralabomba
     #
     
     get :index do
+      @post = Post.new
+
       @page = (params[:p] || 1).to_i
       @filter = params[:f] || 'n'
-      @category = params[:c].nil? || params[:c].to_s.length == 0 ? nil : params[:c]
-      @post = Post.new
-      @posts = @filter == 'n'? Post.get_page_results(@page) : Post.get_popular_page_results(@page) if @category.nil?
-      @posts = Post.get_page_for_category(@category, @page) if @posts.nil? && !@category.nil?
+      
+      @posts = @filter == 'n'? Post.get_page_results(@page) : Post.get_popular_page_results(@page)
+
       @posts = [] if @posts.nil?
 
+      @tweets = AppHelper.get_twitter_posts
+
+      render "index"
+    end
+
+    get 'tags', :with => :id do
+      @page = (params[:p] || 1).to_i
+      @category = params[:id]
+    
+      redirect url(:index) if @category.nil?
+
+      @posts = Post.get_page_for_category(@category, @page)
+      
       @tweets = AppHelper.get_twitter_posts
 
       render "index"

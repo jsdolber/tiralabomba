@@ -45,7 +45,7 @@
               = image_tag('/assets/b.png')
               %div.title-text
                 TIRALABOMBA
-            - if request.route_obj.action == :index
+            - if request.route_obj.action == :index || request.route_obj.action == 'tags'
               .row.categories
                 = partial 'categories'
           .col-md-10         
