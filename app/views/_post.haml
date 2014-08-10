@@ -17,7 +17,7 @@
         - if !post.vote_count.nil? && post.vote_count > 0
           %div{ :class => "red-tooltip tooltip fade right in", :style => "top: 5px; left: 90px; display: block;"}
             %div.tooltip-arrow
-            %div.tooltip-inner
+            %div.tooltip-inner.vote-counter
               = post.vote_count
       .col-md-4.disqus{ :style => AppHelper.is_disqus_link_displayed(request.url)}
         %a{:href => "/show/#{post.friendly_url}#disqus_thread"}

@@ -47,6 +47,7 @@
 
 $(document).ready(function() {
     var text_max = 500;
+    var voted_posts = [];
 
     $('#dropit_count').html(text_max);
     $(".btn-create").toggleClass('disabled');
@@ -98,9 +99,15 @@ $(document).ready(function() {
         .fail(function() {
         })
         .always(function() {
-            el.parent().find(".vote").css('color', 'black');
-            for (var i = rating; i >= 0; i--) {
-                el.parent().find(".vote#" + i).css('color', 'red');
+            if (voted_posts.indexOf(post_id) < 0) {
+                el.parent().find(".vote").css('color', 'black');
+                var nvotecount = parseInt(el.parent().find(".vote-counter").text()) + 1;
+                el.parent().find(".vote-counter").text(nvotecount);
+                for (var i = rating; i >= 0; i--) {
+                    el.parent().find(".vote#" + i).css('color', 'red');
+                };
+
+                voted_posts.push(post_id);
             };
 
         });

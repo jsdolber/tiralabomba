@@ -149,7 +149,7 @@ module Tiralabomba
 
     post :vote_post do
       p = Post.find(params[:post_id])
-      debugger
+      
       if (p)
         v = Vote.new
         v.rating = params[:rating]
