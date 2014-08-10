@@ -195,3 +195,10 @@ div[class*="embossed"] {
 }
 
 .list-group-item {letter-spacing: 1px;}
+
+.red-tooltip.tooltip.right .tooltip-inner {
+    background-color:#d2322d;
+}
+.red-tooltip.tooltip.right .tooltip-arrow {
+      border-right-color: #d2322d;
+}

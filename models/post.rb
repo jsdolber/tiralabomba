@@ -8,6 +8,7 @@ class Post
   key :last_voted, Date
   key :user_id, String
   key :stored_avg, Integer
+  key :vote_count, Integer
   key :category_ids, Array
   key :friendly_url, String
   many :categories, :in => :category_ids

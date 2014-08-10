@@ -22,6 +22,12 @@
   .controls
     =f.text_field :stored_avg, :class => 'form-control input-large input-with-feedback'
     %span.help-inline=error ? f.error_message_on(:stored_avg, :class => 'text-error') : pat(:example)
+- error = @post.errors.include?(:vote_count)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :vote_count, :class => 'control-label'
+  .controls
+    =f.text_field :vote_count, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:vote_count, :class => 'text-error') : pat(:example)
 %fieldset.control-group{:class => error ? 'has-error' : ''}
   =f.label :categories_in_short_name, :class => 'control-label'
   .controls

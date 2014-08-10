@@ -119,7 +119,7 @@ module Tiralabomba
       @posts = Post.search(params[:k]) unless params[:k].nil?
 
       @keyword = params[:k]
-      
+
       @tweets = AppHelper.get_twitter_posts
 
       render "search"
@@ -149,13 +149,14 @@ module Tiralabomba
 
     post :vote_post do
       p = Post.find(params[:post_id])
-      
+      debugger
       if (p)
         v = Vote.new
         v.rating = params[:rating]
         p.last_voted = Time.now
         p.votes << v
         p.stored_avg = p.vote_avg + p.votes.count
+        #p.vote_count = p.vote_count.to_i + 1
         p.save!
       end
     end
