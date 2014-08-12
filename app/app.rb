@@ -155,8 +155,8 @@ module Tiralabomba
         v.rating = params[:rating]
         p.last_voted = Time.now
         p.votes << v
-        p.stored_avg = p.vote_avg + p.votes.count
-        #p.vote_count = p.vote_count.to_i + 1
+        p.stored_avg = p.calc_vote_avg
+        p.vote_count = p.vote_count.to_i + 1
         p.save!
       end
     end

@@ -20,7 +20,7 @@ class Post
   validate :throttle_interval
   validate :validate_content_line_breaks
 
-  def vote_avg
+  def calc_vote_avg
     total_rating = 0
     votes.each { |vote| total_rating += vote.rating unless vote.rating.nil? }
     return (total_rating / votes.count) if votes.count > 0
@@ -63,17 +63,17 @@ class Post
 
   def self.get_page_results(page_num)
 
-    cached_page = Padrino.cache.get("results-#{page_num}")
+    cached_page = nil #Padrino.cache.get("results-#{page_num}")
     
-    if cached_page.nil?
+    #if cached_page.nil?
       cached_page = Post.paginate({
                     :order    => :created_at.desc,
                     :per_page => 10, 
                     :page     => page_num,
                     })
 
-      Padrino.cache.set("results-#{page_num}", cached_page, :expires_in => (60*30))
-    end
+     # Padrino.cache.set("results-#{page_num}", cached_page, :expires_in => (60*30))
+    #end
 
     cached_page
   end
@@ -84,7 +84,7 @@ class Post
       
       if cached_page.nil?
           cached_page = Post.paginate({
-                  :order    => :stored_avg.desc,
+                  :order    => "vote_count desc, stored_avg desc",
                   :per_page => 10, 
                   :page     => page_num,
                })

@@ -9,11 +9,11 @@
       = partial 'category_badge', :collection => post.categories
     %div.row.voting
       .col-md-3.votes
-        %i.glyphicon.glyphicon-fire.vote{:id => 0, :style => (post.vote_avg.to_f > 0 ? "color:red" : "color:inherit")}
-        %i.glyphicon.glyphicon-fire.vote{:id => 1, :style => (post.vote_avg.to_f > 1 ? "color:red" : "color:inherit")}
-        %i.glyphicon.glyphicon-fire.vote{:id => 2, :style => (post.vote_avg.to_f > 2 ? "color:red" : "color:inherit")}
-        %i.glyphicon.glyphicon-fire.vote{:id => 3, :style => (post.vote_avg.to_f > 3 ? "color:red" : "color:inherit")}
-        %i.glyphicon.glyphicon-fire.vote{:id => 4, :style => (post.vote_avg.to_f > 4 ? "color:red" : "color:inherit")}
+        %i.glyphicon.glyphicon-fire.vote{:id => 0, :style => (post.stored_avg.to_f > 0 ? "color:red" : "color:inherit")}
+        %i.glyphicon.glyphicon-fire.vote{:id => 1, :style => (post.stored_avg.to_f > 1 ? "color:red" : "color:inherit")}
+        %i.glyphicon.glyphicon-fire.vote{:id => 2, :style => (post.stored_avg.to_f > 2 ? "color:red" : "color:inherit")}
+        %i.glyphicon.glyphicon-fire.vote{:id => 3, :style => (post.stored_avg.to_f > 3 ? "color:red" : "color:inherit")}
+        %i.glyphicon.glyphicon-fire.vote{:id => 4, :style => (post.stored_avg.to_f > 4 ? "color:red" : "color:inherit")}
         - if !post.vote_count.nil? && post.vote_count > 0
           %div{ :class => "red-tooltip tooltip fade right in", :style => "top: 5px; left: 90px; display: block;"}
             %div.tooltip-arrow
