@@ -63,17 +63,17 @@ class Post
 
   def self.get_page_results(page_num)
 
-    cached_page = nil #Padrino.cache.get("results-#{page_num}")
+    cached_page = Padrino.cache.get("results-#{page_num}")
     
-    #if cached_page.nil?
+    if cached_page.nil?
       cached_page = Post.paginate({
                     :order    => :created_at.desc,
                     :per_page => 10, 
                     :page     => page_num,
                     })
 
-     # Padrino.cache.set("results-#{page_num}", cached_page, :expires_in => (60*30))
-    #end
+      Padrino.cache.set("results-#{page_num}", cached_page, :expires_in => (60*30))
+    end
 
     cached_page
   end
