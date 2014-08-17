@@ -11,6 +11,8 @@ class Post
   key :vote_count, Integer
   key :category_ids, Array
   key :friendly_url, String
+  key :location_neighborhood, String
+  key :location_country, String
   many :categories, :in => :category_ids
 
   timestamps!

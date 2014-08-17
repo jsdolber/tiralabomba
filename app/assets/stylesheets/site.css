@@ -202,3 +202,7 @@ div[class*="embossed"] {
 .red-tooltip.tooltip.right .tooltip-arrow {
       border-right-color: #d2322d;
 }
+
+.header-row {margin-bottom: 20px}
+.post-location {}
+.location-md {padding-left: 0px}

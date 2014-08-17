@@ -1,8 +1,14 @@
 %div.row.post{:id => post.id}
   %div.row
-    %div.row
-      %span.label.pull-right.post-time{:class => AppHelper.label_style_for_post(post.created_at)}
-        = time_ago_in_words(post.created_at || Time.now)
+    %div.row.header-row
+      .col-md-6.location-md
+        - unless post.location_neighborhood.nil? || post.location_neighborhood.empty?
+          %span.label.label-default.pull-left.post-location
+            desde
+            = post.location_neighborhood.downcase            
+      .col-md-6
+        %span.label.pull-right.post-time{:class => AppHelper.label_style_for_post(post.created_at)}
+          = time_ago_in_words(post.created_at || Time.now)
     %div.row.post-content
       = simple_format(post.content)
     %div.row.categories-row

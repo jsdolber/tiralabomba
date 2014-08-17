@@ -29,6 +29,11 @@
     =f.text_field :vote_count, :class => 'form-control input-large input-with-feedback'
     %span.help-inline=error ? f.error_message_on(:vote_count, :class => 'text-error') : pat(:example)
 %fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :location_neighborhood, :class => 'control-label'
+  .controls
+    =f.text_field :location_neighborhood, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:location_neighborhood, :class => 'text-error') : pat(:example)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
   =f.label :categories_in_short_name, :class => 'control-label'
   .controls
     =f.text_field :categories_in_short_name, :class => 'form-control input-large input-with-feedback'

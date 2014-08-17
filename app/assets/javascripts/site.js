@@ -45,6 +45,9 @@
 
 })(jQuery);
 
+var fnGetCityForCoords;
+var fnGetLocation;
+
 $(document).ready(function() {
     var text_max = 500;
     var voted_posts = [];
@@ -136,6 +139,33 @@ $(document).ready(function() {
         });
     }
 
+    fnGetCityForCoords = function(lat, long){
+        //lat = -31.3906045;
+        //long = -64.1850133;
+        //-31.3906045,-64.1850133
+    
+        $.ajax({
+            type: 'GET',
+            dataType: "json",
+            url: "http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+long+"&sensor=false",
+            data: {},
+            success: function(data) {
+                $("#location_neighborhood").val(data.results[1].address_components[0].long_name);
+                $("#location_country").val(data.results[1].address_components[3].long_name);
+            },
+            error: function () { console.log('error'); } 
+        }); 
+    }
+
+
+    fnGetLocation = function(){
+        if (navigator.geolocation) {
+            navigator.geolocation.watchPosition(function (position) {
+                    fnGetCityForCoords(position.coords.latitude, position.coords.longitude);
+             });
+        }
+    }
+
     $(".filter-n").click(function(){ location.href = '/?f=n'});
     $(".filter-p").click(function(){ location.href = '/?f=p'});
 
@@ -177,7 +207,10 @@ $(document).ready(function() {
         var searchEl = $('#search-text');
 
         if (searchEl.val().length > 0) {};
-        location.href = '/search/' + searchEl.val();  });
+            location.href = '/search/' + searchEl.val();  
+    });
+
+    fnGetLocation();
 });
 
 function getUrlVars()

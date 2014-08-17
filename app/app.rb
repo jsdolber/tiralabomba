@@ -134,7 +134,9 @@ module Tiralabomba
       p = Post.new
       p.content = strip_tags(params[:content])
       p.user_id = Post.get_user_id_from_request(request)
-      p.set_categories(params[:categories])      
+      p.set_categories(params[:categories])
+      p.location_neighborhood = params[:location_neighborhood]
+      p.location_country = params[:location_country]
       p.friendly_url = p.content.split(' ').take(7).join('-').downcase
 
       if !p.save
