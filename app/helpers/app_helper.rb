@@ -51,6 +51,6 @@ class AppHelper
       Padrino.cache.set('tweets', tweets, :expires_in => (60*10))
     end
 
-    tweets[0, 10]
+    tweets[0, 7]
   end
 end

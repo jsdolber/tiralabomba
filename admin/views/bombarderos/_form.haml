@@ -1,0 +1,42 @@
+- error = @bombardero.errors.include?(:username)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :username, :class => 'control-label'
+  .controls
+    =f.text_field :username, :class => 'form-control input-large input-with-feedback', :autofocus => true
+    %span.help-inline=error ? f.error_message_on(:username, :class => 'text-error') : pat(:example)
+- error = @bombardero.errors.include?(:name)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :name, :class => 'control-label'
+  .controls
+    =f.text_field :name, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:name, :class => 'text-error') : pat(:example)
+- error = @bombardero.errors.include?(:content)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :content, :class => 'control-label'
+  .controls
+    =f.text_field :content, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:content, :class => 'text-error') : pat(:example)
+- error = @bombardero.errors.include?(:url)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :url, :class => 'control-label'
+  .controls
+    =f.text_field :url, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:url, :class => 'text-error') : pat(:example)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :tweet_id, :class => 'control-label'
+  .controls
+    =f.text_field :tweet_id, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:tweet_id, :class => 'text-error') : pat(:example)
+- error = @bombardero.errors.include?(:avatar_url)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :avatar_url, :class => 'control-label'
+  .controls
+    =f.text_field :avatar_url, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:avatar_url, :class => 'text-error') : pat(:example)
+
+.form-actions
+  =f.submit pat(:save), :class => 'btn btn-primary'
+  &nbsp;
+  =f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  &nbsp;
+  =link_to pat(:cancel), url(:bombarderos, :index), :class => 'btn btn-default'

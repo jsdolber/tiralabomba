@@ -1,0 +1,17 @@
+%div
+	.row.tweet
+		.col-md-2.avatar
+			%img{:src => bombartweet.avatar_url }
+		.col-md-10.content
+			.row
+				%strong
+					= bombartweet.name
+				%small.tweet-username
+					= '@' + bombartweet.username
+			.row
+				%span.tweet-text
+					= bombartweet.content
+				%a.link-to-tweet{:href => bombartweet.url.to_s, :target => '_blank'}
+					%i.glyphicon.glyphicon-share-alt
+	.row.tweet-hr
+		%hr

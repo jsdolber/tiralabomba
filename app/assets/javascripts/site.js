@@ -117,7 +117,8 @@ $(document).ready(function() {
     });
 
     var tweetParser = function(){
-        $(".tweet-text").each(function()
+
+        var linkToTwitter = function()
         {
             var tokens = $(this).text().split(' ');
 
@@ -136,14 +137,14 @@ $(document).ready(function() {
                     $(this).html(currentHtml);
                 };
             };
-        });
+        };
+
+        $(".tweet-text").each(linkToTwitter);
+
+        $('.tweet-username').each(linkToTwitter);
     }
 
     fnGetCityForCoords = function(lat, long){
-        //lat = -31.3906045;
-        //long = -64.1850133;
-        //-31.3906045,-64.1850133
-    
         $.ajax({
             type: 'GET',
             dataType: "json",
@@ -174,6 +175,7 @@ $(document).ready(function() {
     });
 
     $(".tweet").linkify();
+
     tweetParser();
 
     /*

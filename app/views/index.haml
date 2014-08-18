@@ -36,4 +36,4 @@
         - else
           %a{:href => "/tags/#{@category}/?p=#{(@page.to_i + 1).to_s}"} Anteriores
 .col-md-4
-  = partial 'sidebar', :object => @tweets
+  = partial 'sidebar', :locals => {:tweets => @tweets, :bombarderos => @bombarderos}

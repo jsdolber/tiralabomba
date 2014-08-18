@@ -1,0 +1,60 @@
+%ul.nav.nav-tabs
+  %li.active=link_to tag_icon(:list, pat(:list)), url(:bombarderos, :index)
+  %li=link_to tag_icon(:plus, pat(:new)), url(:bombarderos, :new)
+
+.tabs-content
+  %table#list.table.table-striped.table-hover.table-condensed
+    %thead
+      %tr
+        %th.header.list-menu
+          .dropdown
+            %a.list-menu-toggle.dropdown-toggle{:href => '#', :'data-toggle' => :dropdown}
+              =tag_icon :magic
+              %span.caret
+            %ul.list-menu.dropdown-menu{:role => :menu}
+              %li.list-menu-wrapper=link_to tag_icon(:check, pat(:select_all)), '#', :id => 'select-all', :class => 'list-menu-link'
+              %li.list-menu-wrapper.list-menu-wrapper-disabled
+                =link_to tag_icon(:'check-empty', pat(:deselect_all)), '#', :id => 'deselect-all', :class => 'list-menu-link list-menu-link-disabled'
+              %li.list-menu-divider.divider
+              %li.list-menu-wrapper.list-menu-wrapper-disabled
+                =link_to tag_icon(:trash, pat(:delete_selected)), '#', :id => 'delete-selected', :class => 'list-menu-link list-menu-link-disabled'
+                .list-menu-popover-delete-selected.popover.right
+                  .arrow
+                  %h3.popover-title=pat(:delete_selected_title)
+                  .popover-content
+                    -form_tag url(:bombarderos, :destroy_many), :method => :delete do
+                      =hidden_field_tag :bombardero_ids, :'data-delete-many-ids' => true
+                      =submit_tag pat(:delete), :class =>'list-menu-popover-delete-selected-btn btn btn-danger btn-small'
+                      .btn.btn-default.btn-small.cancel=pat(:cancel)
+        %th.header= mat(:bombardero, :username)
+        %th.header= mat(:bombardero, :name)
+        %th.header= mat(:bombardero, :content)
+        %th.header= mat(:bombardero, :url)
+        %th.header= mat(:bombardero, :avatar_url)
+        %th.header= mat(:bombardero, :created_at)
+        %th.header= mat(:bombardero, :updated_at)
+        %th.header.list-row-action-header
+
+    %tbody
+      -@bombarderos.each do |bombardero|
+        %tr.list-row
+          %td.list-column.list-selectable
+            =check_box_tag 'bombardero_ids[]', :value => bombardero.id, :class => 'list-selectable-checkbox'
+          %td.list-column=bombardero.username
+          %td.list-column=bombardero.name
+          %td.list-column=bombardero.content
+          %td.list-column=bombardero.url
+          %td.list-column=bombardero.avatar_url
+          %td.list-column=time_ago_in_words bombardero.created_at
+          %td.list-column=time_ago_in_words bombardero.updated_at
+          %td.list-column.list-row-action
+            .list-row-action-wrapper
+              =link_to tag_icon(:edit), :href => url(:bombarderos, :edit, :id => bombardero.id), :rel => :tooltip, :title => "#{pat(:edit)} bombardero", :class => 'list-row-action-wrapper-link'
+              =link_to tag_icon(:trash), :rel => :tooltip, :title => "#{pat(:delete)} bombardero", :class => 'list-row-action-delete-one list-row-action-wrapper-link'
+              .popover.list-row-action-popover-delete-one.left
+                .arrow
+                %h3.popover-title=pat(:delete, :model => "bombardero")
+                .popover-content
+                  -form_tag url(:bombarderos, :destroy, :id => bombardero.id), :method => :delete do
+                    =submit_tag pat(:delete), :class =>'list-row-action-popover-delete-one-btn btn btn-danger btn-small'
+                    .btn.btn-default.btn-small.cancel=pat(:cancel)

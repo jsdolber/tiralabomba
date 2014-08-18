@@ -10,3 +10,11 @@
         %div
           %a.twitter-follow-button{:href=>"https://twitter.com/tiralabombaaa", "data-show-count"=>"true", "data-lang"=>"es"}
             Seguir a @tiralabombaaa
+.row.bombardeors
+  .panel.panel-default
+    .panel-heading
+      %h3.panel-title
+        %i.glyphicon.glyphicon-chevron-right
+        BOMBARDEROS
+    .panel-body
+      = partial 'bombartweet', :collection => @bombarderos

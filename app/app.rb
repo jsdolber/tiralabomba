@@ -84,6 +84,8 @@ module Tiralabomba
 
       @tweets = AppHelper.get_twitter_posts
 
+      @bombarderos = Bombardero.get_top_five
+
       render "index"
     end
 
@@ -96,6 +98,8 @@ module Tiralabomba
       @posts = Post.get_page_for_category(@category, @page)
       
       @tweets = AppHelper.get_twitter_posts
+
+      @bombarderos = Bombardero.get_top_five
 
       render "index"
     end
