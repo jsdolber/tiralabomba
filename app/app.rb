@@ -186,7 +186,7 @@ module Tiralabomba
     #   render "who"
     # end
 
-    get :privacy, :cache => true do
+    get :privacy do #, :cache => true do
 
       #metadata
       @title = 'Privacidad'
