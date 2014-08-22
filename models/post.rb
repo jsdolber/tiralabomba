@@ -65,7 +65,7 @@ class Post
 
   def self.get_page_results(page_num)
 
-    cached_page = Padrino.cache.get("results-#{page_num}")
+    cached_page = nil #Padrino.cache.get("results-#{page_num}")
     
     if cached_page.nil?
       cached_page = Post.paginate({
@@ -103,6 +103,11 @@ class Post
 
   def self.search(keyword)
     Post.where(:content => Regexp.new("#{keyword}", true)).all
+  end
+
+  def self.archive(year, month)
+    d = Time.utc(year,month,1)
+    Post.where( :created_at => { '$gt' => d, '$lt' => d + 1.month} ).all
   end
 
   # checks if the user hasn't posted in the last minute

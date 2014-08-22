@@ -1,15 +1,13 @@
 .col-md-8
   %div.row.central-row
     %h2.text-muted
-      Resultados para "
-      = @keyword
-      ":
+      Archivo
   %div.row.central-row
     %div.jumbotron.post-background
       = partial 'post', :collection => @posts
       - if @posts.empty?
         %h3
-          No se encontró nada
+          No se encontró nada para esta fecha
           %small
             (por ahora).
 .col-md-4

@@ -1,0 +1,7 @@
+.list-group
+  .list-group-item.category-heading
+    %i.glyphicon.glyphicon-chevron-right
+    ARCHIVO
+  - 4.times do |i|
+    %a.list-group-item{:href => "/archive/#{Time.new.year}/#{Time.new.month - (i - 0)}"}
+      = I18n.l(Time.new - (i - 1).month - Time.new.day.days, :format => '%b %Y')

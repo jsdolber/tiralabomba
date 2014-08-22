@@ -45,11 +45,13 @@
               = image_tag('/assets/b.png')
               %div.title-text
                 TIRALABOMBA
-            - if request.route_obj.action == :index || request.route_obj.action == 'tags' || request.route_obj.action == :search
+            - if request.route_obj.action == :index || request.route_obj.action == 'tags' || request.route_obj.action == :search || request.route_obj.action == :archive
               .row.categories.sidebar-item-right
                 = partial 'categories'
               .row.search.sidebar-item-right
                 = partial 'search'
+              .row.search.sidebar-item-right
+                = partial 'archive'
           .col-md-10         
             #main= yield
     #footer

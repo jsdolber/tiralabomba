@@ -125,8 +125,23 @@ module Tiralabomba
       @keyword = params[:k]
 
       @tweets = AppHelper.get_twitter_posts
+      @bombarderos = Bombardero.get_top_five
 
       render "search"
+    end
+
+    get :archive, :with => [:year, :month] do
+      @posts = [] 
+
+      @month = params[:month]
+      @year = params[:year]
+      
+      @posts = Post.archive(@year, @month) unless @month.nil? || @year.nil?
+      
+      @tweets = AppHelper.get_twitter_posts
+      @bombarderos = Bombardero.get_top_five
+
+      render "archive"
     end
 
     get '/rss', :provides => [:rss] do

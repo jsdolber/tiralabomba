@@ -148,7 +148,7 @@ $(document).ready(function() {
         $.ajax({
             type: 'GET',
             dataType: "json",
-            url: "http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+long+"&sensor=false",
+            url: "http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+long+"&sensor=false&language=es",
             data: {},
             success: function(data) {
                 $("#location_neighborhood").val(data.results[1].address_components[0].long_name);
