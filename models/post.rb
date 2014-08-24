@@ -65,7 +65,7 @@ class Post
 
   def self.get_page_results(page_num)
 
-    cached_page = nil #Padrino.cache.get("results-#{page_num}")
+    cached_page = Padrino.cache.get("results-#{page_num}")
     
     if cached_page.nil?
       cached_page = Post.paginate({

@@ -71,6 +71,15 @@ module Tiralabomba
     #     render 'errors/505'
     #   end
     #
+
+    before do
+      should_set_vars = request.route_obj.action == :index || 
+                    request.route_obj.action == 'tags' || 
+                    request.route_obj.action == :search || 
+                    request.route_obj.action == :archive
+
+      set_sidebar_vars if should_set_vars
+    end
     
     get :index do
       @post = Post.new
@@ -82,10 +91,6 @@ module Tiralabomba
 
       @posts = [] if @posts.nil?
 
-      @tweets = AppHelper.get_twitter_posts
-
-      @bombarderos = Bombardero.get_top_five
-
       render "index"
     end
 
@@ -96,10 +101,6 @@ module Tiralabomba
       redirect url(:index) if @category.nil?
 
       @posts = Post.get_page_for_category(@category, @page)
-      
-      @tweets = AppHelper.get_twitter_posts
-
-      @bombarderos = Bombardero.get_top_five
 
       render "index"
     end
@@ -124,9 +125,6 @@ module Tiralabomba
 
       @keyword = params[:k]
 
-      @tweets = AppHelper.get_twitter_posts
-      @bombarderos = Bombardero.get_top_five
-
       render "search"
     end
 
@@ -137,9 +135,6 @@ module Tiralabomba
       @year = params[:year]
       
       @posts = Post.archive(@year, @month) unless @month.nil? || @year.nil?
-      
-      @tweets = AppHelper.get_twitter_posts
-      @bombarderos = Bombardero.get_top_five
 
       render "archive"
     end
@@ -223,6 +218,13 @@ module Tiralabomba
       @title = 'Términos y Condiciones'
 
       render "terms"
+    end
+
+    private
+
+    def set_sidebar_vars
+      @tweets = AppHelper.get_twitter_posts
+      @bombarderos = Bombardero.get_top_five
     end
     
   end
