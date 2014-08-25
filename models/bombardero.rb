@@ -40,7 +40,7 @@ class Bombardero
     cached_bs = Padrino.cache.get("bombarderos")
     
     if cached_bs.nil?
-      cached_bs = Bombardero.all[0,5]
+      cached_bs = Bombardero.order(:created_at.desc).all[0,5]
       Padrino.cache.set("bombarderos", cached_bs, :expires_in => (60*30))
     end
 
