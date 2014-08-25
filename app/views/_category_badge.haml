@@ -1,2 +1,3 @@
 %span.badge
-  = '#' + category_badge.name
+  %a{:href => '/tags/' + category_badge.name}
+    = '#' + category_badge.name
