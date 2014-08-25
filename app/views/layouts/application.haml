@@ -30,7 +30,27 @@
     #wrap
       .container
         .row.flash-notice          
-          %h3=flash[:notice]
+          .col-md-2
+            &nbsp;
+          .col-md-10
+            - unless flash[:notice].nil?
+              %div.alert.alert-danger.fade.in{:role => "alert"}
+                %button{:type=>"button", :class=>"close", "data-dismiss"=>"alert"}
+                  %span{"aria-hidden"=>"true"}
+                    ×
+                  %span.sr-only
+                    Cerrar
+                =flash[:notice].upcase
+            - unless flash[:success].nil?
+              %div.alert.alert-info.fade.in{:role => "alert"}
+                %button{:type=>"button", :class=>"close", "data-dismiss"=>"alert"}
+                  %span{"aria-hidden"=>"true"}
+                    ×
+                  %span.sr-only
+                    Cerrar
+                %strong
+                  OK!
+                =flash[:success].upcase
         .row
           %div.addthis_toolbox.addthis_floating_style.addthis_counter_style{:style => "left:10px;top:50px;"}
             %a.addthis_button_facebook_like{":fb:like:layout" => "box_count"}

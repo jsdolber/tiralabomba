@@ -154,7 +154,9 @@ module Tiralabomba
       p.friendly_url = p.content.split(' ').take(7).join('-').downcase
 
       if !p.save
-        flash[:notice] = '! ' + p.errors.messages[:content].first
+        flash[:notice] = p.errors.messages[:content].first + '!'
+      else
+        flash[:success] = 'Tu mensaje va a ser publicado en breve.'
       end
       
       Post.delete_results_cache
