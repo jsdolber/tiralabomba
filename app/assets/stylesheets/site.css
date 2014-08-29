@@ -32,7 +32,7 @@ body {
 
 .central-row {padding-right: 25px;padding-left: 15px;}
 
-@media (max-width: 1200px) { 
+@media (max-width: 1300px) { 
   .addthis_toolbox {display:none;}
   .bottom-nav {display: none;}
   .social-links {text-align: center;}
@@ -44,6 +44,7 @@ body {
   .btn-search {margin-left: 50%!important;}
   .tweet .content {padding-left: 30px!important;}
   .panel-title {font-size: 13px!important;}
+  .right-bar {width: 30.33333333%!important;}
 }
 
 @media (max-width: 320px) {
