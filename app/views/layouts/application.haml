@@ -58,8 +58,7 @@
             %a.addthis_button_google_plusone{":g:plusone:size" => "tall"}
             %a.addthis_counter
             %script
-              var addthis_config = {"data_track_addressbar":true};
-            %script{:src => "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5300db5b235e4b60"}
+              var addthis_config = {"data_track_addressbar":true};            
           .col-md-2.title
             .row.title
               = image_tag('/assets/b.png')
@@ -100,3 +99,4 @@
         .col-md-4
           %p.text-muted.copyleft.pull-right Copyright (c) 2014 ; Tira La Bomba.
     = javascript_include_tag 'google-analytics'       
+    %script{:src => "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5300db5b235e4b60", :async => true}
