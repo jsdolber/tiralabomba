@@ -13,6 +13,15 @@ class Post
   key :friendly_url, String
   key :location_neighborhood, String
   key :location_country, String
+
+  key :username, String
+  key :name, String
+  key :tweet_url, String
+  key :avatar_url, String
+  key :tweet_id, String
+
+  key :published, Boolean
+
   many :categories, :in => :category_ids
 
   timestamps!
@@ -28,6 +37,54 @@ class Post
     return (total_rating / votes.count) if votes.count > 0
     return votes.first.rating if votes.count == 1
     0
+  end
+
+        #   "username": tweet.user.screen_name,
+        # "name": tweet.user.name,
+        # "content": tweet.text,
+        # "location": tweet.user.location,
+        # "url": "http://twitter.com/" +tweet.user.screen_name + '/status/' + tweet.id_str,
+        # "avatar_url": tweet.user.profile_image_url,
+        # "tweet_id": tweet.id_str
+
+  def is_tweet
+    !self.tweet_url.nil?
+  end
+
+  def self.load_from_tweet(id)
+      erik = Post.twitter_cli
+      
+      t = erik.status(id)
+      p = Post.new
+
+      unless t.nil?
+        p.tweet_id = id
+        p.tweet_url = "http://twitter.com/" + t.user.screen_name + '/status/' + t.id.to_s
+        p.name = t.user.name
+        p.username = t.user.screen_name
+        p.user_id = t.user.screen_name
+        p.content = t.text
+        p.avatar_url = t.user.profile_image_url.to_s
+        p.location_neighborhood = t.user.location
+        p.location_country = 'Argentina'
+        p.published = true
+      end
+      
+      p
+  end
+
+  def publish
+    self.published = true
+
+    erik = Post.twitter_cli
+
+    result = self.save
+
+    # erik.update("@#{self.username} " + 
+    #     ["tu tweet fue publicado en http://tiralabomba.com #tiralabomba", 
+    #       "tu genial tweet fue publicado en http://tiralabomba #tiralabomba"].sample) if result
+
+    result
   end
 
   def categories_in_short_name
@@ -49,7 +106,7 @@ class Post
   def self.get_page_for_category(name, page_num)
     c = Category.find_by_name(name)
     c = Category.find_by_short_name(name) if c.nil?
-    Post.where(:category_ids => c.id).paginate({
+    Post.where(:category_ids => c.id, :published => true).paginate({
                   :order    => :created_at.desc,
                   :per_page => 10, 
                   :page     => page_num,
@@ -68,7 +125,7 @@ class Post
     cached_page = Padrino.cache.get("results-#{page_num}")
     
     if cached_page.nil?
-      cached_page = Post.paginate({
+      cached_page = Post.where(:published => true).paginate({
                     :order    => :created_at.desc,
                     :per_page => 10, 
                     :page     => page_num,
@@ -85,7 +142,7 @@ class Post
       cached_page = Padrino.cache.get("populars-#{page_num}")
       
       if cached_page.nil?
-          cached_page = Post.paginate({
+          cached_page = Post.where(:published => true).paginate({
                   :order    => "vote_count desc, stored_avg desc",
                   :per_page => 10, 
                   :page     => page_num,
@@ -102,12 +159,16 @@ class Post
   end
 
   def self.search(keyword)
-    Post.where(:content => Regexp.new("#{keyword}", true)).all
+    Post.where(:content => Regexp.new("#{keyword}", true), :published => true).all
   end
 
   def self.archive(year, month)
     d = Time.utc(year,month,1)
-    Post.where( :created_at => { '$gt' => d, '$lt' => d + 1.month} ).all
+    Post.where( :created_at => { '$gt' => d, '$lt' => d + 1.month}, :published => true ).all
+  end
+
+  def self.get_friendly_url(content)
+      content.split(' ').take(7).join('-').downcase
   end
 
   # checks if the user hasn't posted in the last minute
@@ -127,5 +188,14 @@ class Post
   def validate_content_line_breaks
     line_break_cnt = content.count 13.chr
     errors.add( :content, "el mensaje es inválido, probá con menos cortes.") if line_break_cnt > 8
+  end
+
+  def self.twitter_cli
+    Twitter::REST::Client.new do |config|
+        config.consumer_key = 'bVqypJtXqUiiMH8d6FJd3A01w'
+        config.consumer_secret = 'UNK3wEZ1C5KA1DSrTC0v9smKPkRv2WTBgbZXKg4AcDwV6DiA3G'
+        config.access_token        = '17706291-lYhpVZTIJeUzlI03wpeA7CoCwl1wqyUeha2JZvRoz'
+        config.access_token_secret = 'YxMP10KKSaFujFMlGT4ykHBJ1rS5745CiMUlWgKJ3Y8Wz'
+    end
   end
 end

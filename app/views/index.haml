@@ -1,20 +1,6 @@
 .col-md-8
-  %script{:type=>"text/javascript"}
-    var disqus_shortname = 'tiralabomba';
-    (function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
   %div.row.central-row.create-post
     = partial 'create_post'
-  %div.row.filters
-    %div.btn-group
-      %button.btn.filter-n{:type=> "button", :class => @filter == 'n' ? "active btn-danger" : "btn-default"}
-        Nuevos
-      %button.btn.filter-p{:type=> "button", :class => @filter != 'n' ? "active btn-danger" : "btn-default"}
-        + Votados
   %div.row.central-row
     %div.jumbotron.post-background
       = partial 'post', :collection => @posts
@@ -36,4 +22,4 @@
         - else
           %a{:href => "/tags/#{@category}/?p=#{(@page.to_i + 1).to_s}"} Anteriores
 .col-md-4.right-bar
-  = partial 'sidebar', :locals => {:tweets => @tweets, :bombarderos => @bombarderos}
+  = partial 'sidebar', :locals => {:tweets => @tweets}

@@ -12,7 +12,7 @@ body {
   padding: 0 10px;
 }
 .main-wrapper {
-  padding-top: 70px /* same as footer's height */
+  padding-top: 70px /* same as footers height */
 }
 .main-wrapper-push {
   height: 70px; /* same as the footer */
@@ -259,6 +259,17 @@ footer p {
 .list-row-action-popover-delete-one-btn {
   margin-right: 10px;
 }
+
+.list-row-action-popover-publish-one {
+  left: -120px;
+  top: -27px;
+  width: 200px;
+  text-align: center;
+}
+.list-row-action-popover-publish-one-btn {
+  margin-right: 10px;
+}
+
 /* ---- End Application::List::ActionsOnRow ---- */
 /* ---- Begin Application::List::ActionsOnList ---- */
 .list-menu {

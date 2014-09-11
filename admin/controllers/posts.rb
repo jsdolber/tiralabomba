@@ -13,6 +13,8 @@ Tiralabomba::Admin.controllers :posts do
 
   post :create do
     @post = Post.new(params[:post])
+    @post = Post.load_from_tweet(@post.tweet_id) unless @post.tweet_id.nil?
+    
     if @post.save
       @title = pat(:create_title, :model => "post #{@post.id}")
       flash[:success] = pat(:create_success, :model => 'Post')
@@ -51,6 +53,22 @@ Tiralabomba::Admin.controllers :posts do
       end
     else
       flash[:warning] = pat(:update_warning, :model => 'post', :id => "#{params[:id]}")
+      halt 404
+    end
+  end
+
+  post :publish, :with => :id do
+    @title = "Publicao"
+    post = Post.find(params[:id])
+    if post
+      if post.publish
+        flash[:success] = pat(:publish_success, :model => 'Post', :id => "#{params[:id]}")
+      else
+        flash[:error] = pat(:publish_error, :model => 'post')
+      end
+      redirect url(:posts, :index)
+    else
+      flash[:warning] = pat(:publish_warning, :model => 'post', :id => "#{params[:id]}")
       halt 404
     end
   end

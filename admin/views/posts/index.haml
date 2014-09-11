@@ -56,3 +56,11 @@
                   -form_tag url(:posts, :destroy, :id => post.id), :method => :delete do
                     =submit_tag pat(:delete), :class =>'list-row-action-popover-delete-one-btn btn btn-danger btn-small'
                     .btn.btn-default.btn-small.cancel=pat(:cancel)
+              =link_to tag_icon("thumbs-up"), :rel => :tooltip, :title => "#{pat(:publish)} post", :class => 'list-row-action-publish-one list-row-action-wrapper-link'
+              .popover.list-row-action-popover-publish-one.left
+                .arrow
+                %h3.popover-title=pat(:add, :model => "post")
+                .popover-content
+                  -form_tag url(:posts, :publish, :id => post.id), :method => :post do
+                    =submit_tag pat(:publish), :class =>'list-row-action-popover-publish-one-btn btn btn-danger btn-small'
+                    .btn.btn-default.btn-small.cancel=pat(:cancel)

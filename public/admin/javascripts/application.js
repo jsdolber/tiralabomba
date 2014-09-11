@@ -44,6 +44,17 @@
           });
       });
 
+      $('.list-row-action-publish-one').on('click', function(ev) {
+        ev.preventDefault();
+        $(this).addClass('list-row-action-wrapper-link-active')
+          .siblings('.list-row-action-popover-publish-one').first().show()
+          .find('.cancel').on('click', function() {
+
+            $(this).parents('.list-row-action-popover-publish-one').hide()
+              .siblings('.list-row-action-publish-one').removeClass('list-row-action-wrapper-link-active');
+          });
+      });
+
       // Select/deselect record on row's click
       list.find('.list-row').on('click', function(ev) {
         var checkbox, willBeChecked;

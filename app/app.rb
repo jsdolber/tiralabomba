@@ -52,11 +52,11 @@ module Tiralabomba
     #
 
     error do
-      "Dificultades tecnicas. Sepa disculpar."
+      "Dificultades técnicas. Sepa disculpar."
     end
 
     not_found do
-      "Hola! Estas perdid@??"
+      "Hola, estas perdid@?"
     end
 
     ##
@@ -146,22 +146,25 @@ module Tiralabomba
 
     post :create_post do
       p = Post.new
+      
       p.content = strip_tags(params[:content])
       p.user_id = Post.get_user_id_from_request(request)
       p.set_categories(params[:categories])
       p.location_neighborhood = params[:location_neighborhood]
       p.location_country = params[:location_country]
-      p.friendly_url = p.content.split(' ').take(7).join('-').downcase
+      p.friendly_url = Post.get_friendly_url(p.content)
+      p.published = true
 
+      result = nil
+      
       if !p.save
-        flash[:notice] = p.errors.messages[:content].first + '!'
+        result = {"status" => 0, "message" => p.errors.messages[:content].first}
       else
-        flash[:success] = 'Tu mensaje va a ser publicado en breve.'
+        Post.delete_results_cache
+        result = {"status" => 1, "message" => 'Tu mensaje va a ser publicado en breve.'}
       end
-      
-      Post.delete_results_cache
-      
-      redirect url('/')
+
+      result.to_json
 
     end
 
@@ -226,7 +229,6 @@ module Tiralabomba
 
     def set_sidebar_vars
       @tweets = AppHelper.get_twitter_posts
-      @bombarderos = Bombardero.get_top_five
     end
     
   end

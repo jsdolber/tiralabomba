@@ -8,23 +8,24 @@
     %link{:href => "/assets/reset.css", :rel => "stylesheet"}
     %link{:href => "/assets/application.css", :rel => "stylesheet"}
     %link{:href => "/assets/bootstrap-multiselect.css", :rel => "stylesheet"}
-    %script{:src => "/assets/jquery.js"}
+    %script{:src => "//code.jquery.com/jquery-1.10.2.js"}
+    %script{:src => "//code.jquery.com/ui/1.11.1/jquery-ui.js"}
     %script{:src => "//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"}      
-    %script{:src => "/assets/application.js"}
+    %script{:src => "/assets/site.js"}
     %script{:src => "/assets/bootstrap-multiselect.js"}
     %meta{:name=>'viewport', :content=> 'width=device-width, initial-scale=1.0'}
-    %meta{:name=>'description', :content=> @description || 'Todo lo que no podias decir. Hasta ahora.'}
+    %meta{:name=>'description', :content=> @description || 'Todo lo que no podías decir. Hasta ahora.'}
     %meta{:name=>'keywords', :content=> 'tiralabomba, secreto, confesion, confesiones, gossip, denuncia.'}
     / facebook
     %meta{:name=>'og:title', :content=>  [@title, "Tira La Bomba"].compact.join(" | ")}
     %meta{:name=>'og:site_name', :content=> 'Tira La Bomba'}
     %meta{:name=>'og:url', :content=> @url || 'http://tiralabomba.com'}
-    %meta{:name=>'og:description', :content=> @description || 'Todo lo que no podias decir. Hasta ahora.'}
+    %meta{:name=>'og:description', :content=> @description || 'Todo lo que no podías decir. Hasta ahora.'}
     %meta{:name=>'og:image', :content=> url_for('/assets/bred.jpg') }
     / twitter
     %meta{:name=>'twitter:title', :content=>  [@title, "Tira La Bomba"].compact.join(" | ")}
     %meta{:name=>'twitter:url', :content=> @url || 'http://tiralabomba.com'}
-    %meta{:name=>'twitter:description', :content=> @description || 'Todo lo que no podias decir. Hasta ahora.'}
+    %meta{:name=>'twitter:description', :content=> @description || 'Todo lo que no podías decir. Hasta ahora.'}
     %meta{:name=>'twitter:image', :content=> url_for('/assets/bred.jpg') }
   %body
     #wrap
@@ -52,13 +53,14 @@
                   OK!
                 =flash[:success].upcase
         .row
-          %div.addthis_toolbox.addthis_floating_style.addthis_counter_style{:style => "left:10px;top:50px;"}
-            %a.addthis_button_facebook_like{":fb:like:layout" => "box_count"}
-            %a.addthis_button_tweet{":tw:count" => "vertical"}
-            %a.addthis_button_google_plusone{":g:plusone:size" => "tall"}
-            %a.addthis_counter
-            %script
-              var addthis_config = {"data_track_addressbar":true};            
+          - unless Padrino.env == :development
+            %div.addthis_toolbox.addthis_floating_style.addthis_counter_style{:style => "left:10px;top:50px;"}
+              %a.addthis_button_facebook_like{":fb:like:layout" => "box_count"}
+              %a.addthis_button_tweet{":tw:count" => "vertical"}
+              %a.addthis_button_google_plusone{":g:plusone:size" => "tall"}
+              %a.addthis_counter
+              %script
+                var addthis_config = {"data_track_addressbar":true};                
           .col-md-2.title
             .row.title
               = image_tag('/assets/b.png')
@@ -71,7 +73,9 @@
                 = partial 'search'
               .row.search.sidebar-item-right
                 = partial 'archive'
-          .col-md-10         
+          .col-md-10
+            .row.mobile-title
+              = image_tag('/assets/b.png')
             #main= yield
     #footer
       .container
@@ -100,3 +104,13 @@
           %p.text-muted.copyleft.pull-right Copyright (c) 2014 ; Tira La Bomba.
     = javascript_include_tag 'google-analytics'       
     %script{:src => "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5300db5b235e4b60", :async => true}
+    %script{:type=>"text/javascript"}
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+    %script{:type=>"text/javascript"}
+      var disqus_shortname = 'tiralabomba';
+      (function () {
+      var s = document.createElement('script'); s.async = true;
+      s.type = 'text/javascript';
+      s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+      (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+      }());

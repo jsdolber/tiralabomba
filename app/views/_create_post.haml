@@ -1,16 +1,25 @@
 - form_tag '/create_post', :method => 'post' do
   = text_area_tag :content,  :class => "form-control embossed-light",:rows=>"1", :placeholder => AppHelper.text_for_input_placeholder, :id => "dropit_input" 
   .row.post-bar
-    .col-md-7
-      %span.text-muted{:id => "dropit_count"} 0
+    %div.text-center.post-msg.error
+      &nbsp
+    %div.text-center.post-msg.success
+      &nbsp
+    .col-md-7.filters-dest
+      %div.row.filters
+        .col-md-8.btn-group.text-right
+          %button.btn.btn-sm.filter-n.has-tooltip{:type=> "button", :class => @filter == 'n' ? "active btn-danger" : "btn-default", "data-toggle"=>"tooltip", "data-placement"=>"top", "title"=>"Ver posts nuevos"}
+            Nuevos
+          %button.btn.btn-sm.filter-p.has-tooltip{:type=> "button", :class => @filter != 'n' ? "active btn-danger" : "btn-default", "data-toggle"=>"tooltip", "data-placement"=>"top", "title"=>"Ver posts más votados"}
+            + Votados
       %input{:type => "hidden", :name => "categories", :id => "categories"}
       %input{:type => "hidden", :name => "location_neighborhood", :id => "location_neighborhood"}
       %input{:type => "hidden", :name => "location_country", :id => "location_country"}
-    .col-md-3
+    .col-md-3.tags
       .input-tag
         %select.multiselect{:multiple => "multiple", :id => "dropit_category", :name => "category"}
           - Category.all(:order => :order.desc).each do |c|
             %option{:value => c.short_name, :name => c.short_name}
               = "#" + c.name
-    .col-md-2
-      %button{:type=>"submit", :class=>"button btn btn-danger btn-create"}
+    .col-md-2.text-right.boom-dest
+      %button.btn.btn-sm.btn-create.has-tooltip{:type=> "button", :class => "btn-danger pull-right", "data-toggle"=>"tooltip", "data-placement"=>"top", "title"=>"Publicar anónimamente"}

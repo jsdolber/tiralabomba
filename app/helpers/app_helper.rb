@@ -18,8 +18,13 @@ class AppHelper
 
   def self.label_style_for_post(created_at)
     minute_diff = (Time.now - created_at) / 60
-    return "label-danger" if minute_diff < 15
+    return "label-danger" if minute_diff < 120
     "no-display"
+  end
+
+  def self.style_for_post_header(post)  
+    return "no-display" if AppHelper.label_style_for_post(post.created_at) == "no-display" && post.location_neighborhood.to_s.length == 0
+    ""
   end
 
   def self.text_for_input_placeholder
@@ -39,18 +44,13 @@ class AppHelper
     tweets = Padrino.cache.get('tweets')
 
     if tweets.nil?
-      erik = Twitter::REST::Client.new do |config|
-        config.consumer_key = 'bVqypJtXqUiiMH8d6FJd3A01w'
-        config.consumer_secret = 'UNK3wEZ1C5KA1DSrTC0v9smKPkRv2WTBgbZXKg4AcDwV6DiA3G'
-        config.access_token        = '17706291-lYhpVZTIJeUzlI03wpeA7CoCwl1wqyUeha2JZvRoz'
-        config.access_token_secret = 'YxMP10KKSaFujFMlGT4ykHBJ1rS5745CiMUlWgKJ3Y8Wz'
-      end
+      erik = Post.twitter_cli
 
       tweets = erik.user_timeline("tiralabombaaa")
 
       Padrino.cache.set('tweets', tweets, :expires_in => (60*10))
     end
 
-    tweets[0, 4]
+    tweets[0, 7]
   end
 end

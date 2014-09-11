@@ -47,13 +47,16 @@
 
 var fnGetCityForCoords;
 var fnGetLocation;
+var fnCreatePost;
 
 $(document).ready(function() {
     var text_max = 500;
     var voted_posts = [];
 
+    //tooltips
+    $(".has-tooltip").tooltip();
+
     $('#dropit_count').html(text_max);
-    $(".btn-create").toggleClass('disabled');
 
     $('#dropit_input').keyup(function() {
         var text_length = $('#dropit_input').val().length;
@@ -61,35 +64,15 @@ $(document).ready(function() {
 
         if (text_remaining < 0)
         {
-            $(".btn-create").addClass('disabled');
             $("#dropit_count").css('color', 'red');
         }            
         else
         {
-            $(".btn-create").removeClass('disabled');
             $("#dropit_count").css('color', '#999');
         }
-
-        if (text_length == 0) { $(".btn-create").addClass('disabled'); };
             
         $('#dropit_count').html(text_remaining);
     });
-
-    $("#dropit_input").focus(function() {
-        $(this).animate({
-            height: 84
-        }, "normal");
-        $(".input-tag").show();
-    }).blur(function() {
-        if ($("#dropit_input").val().length == 0) {
-            $(this).animate({
-                height: 36
-            }, "normal");
-            $(".input-tag").hide();
-        };
-    });
-
-    $(".btn-create").html('<i class="glyphicon glyphicon-fire" ></i>&nbspBoom');
 
     $('.vote').click(function(){
        var post_id = $(this).closest('.post').attr('id');
@@ -142,6 +125,38 @@ $(document).ready(function() {
         $(".tweet-text").each(linkToTwitter);
 
         $('.tweet-username').each(linkToTwitter);
+    }
+
+    fnCreatePost = function()
+    {
+
+       $.post( "create_post", { content: $("#dropit_input").val(), 
+                        categories: $("#categories").val(), 
+                        location_neighborhood: $("location_neighborhood").val(),
+                        location_country: $("#location_country").val(),
+                        authenticity_token: $("[name='authenticity_token']").val() }
+        )
+        .done(function(data) {
+            data = jQuery.parseJSON(data);
+            if (data.status == 0) {                
+                $(".post-msg.error").text(data.message);
+                $(".post-msg.error").show( "slide",  "slow" );
+                $(".input-tag").hide();
+            }
+            else {
+                $(".post-msg.success").text("tu mensaje será publicado en unos minutos.");
+                $(".post-msg.success").show( "slide",  "slow" );
+                $(".input-tag").hide();
+                $("#dropit_input").val('');
+                $("#dropit_input").blur();
+            };
+        })
+        .fail(function() {
+        })
+        .always(function() {
+            
+
+        });
     }
 
     fnGetCityForCoords = function(lat, long){
@@ -211,6 +226,37 @@ $(document).ready(function() {
         if (searchEl.val().length > 0) {};
             location.href = '/search/' + searchEl.val();  
     });
+    
+    // create post
+    $(".btn-create").click(function() {
+
+        if (!$( "#dropit_input" ).is(':visible')) 
+        {
+            $( "#dropit_input" ).show( "fast");
+        }
+        else 
+        {
+            fnCreatePost();
+        }
+    });
+
+    $("#dropit_input").focus(function() {
+        $(this).animate({
+            height: 84
+        }, "normal");
+        $(".input-tag").show('fast');
+        $(".btn-create").html('<i class="glyphicon glyphicon-fire" ></i>&nbspBoom!');
+        $(".post-msg.error").hide();
+    }).blur(function() {
+        if ($("#dropit_input").val().length == 0) {            
+            $(".input-tag").hide('fast');
+            $(this).hide('fast');
+            $(".btn-create").html('<i class="glyphicon glyphicon-fire" ></i>&nbspNuevo Post');
+        };
+    });
+
+    $(".btn-create").html('<i class="glyphicon glyphicon-fire" ></i>&nbspNuevo Post');
+
 
     fnGetLocation();
 });
