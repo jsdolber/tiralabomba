@@ -98,7 +98,9 @@ var normal_phrases = ['El rock es una etapa que vas a pasar',
 						'Posta se ven muy buenas',
 						'Me encanta este programa de tatuajes',
 						'Hoy juega VELEZ es mi felicidad',
-						'Publiqué una nueva foto en Facebook'];
+						'Publiqué una nueva foto en Facebook',
+						'Me gusta como te vestís y como andás, me gusta tu pelo, tu cuerpo',
+						'Estoy feliz , a tres metros sobre el cielo'];
 
 for (var i = normal_phrases.length - 1; i >= 0; i--) {
 	classifier.addDocument(normal_phrases[i], 'normal');
@@ -132,6 +134,8 @@ T.get('search/tweets', { geocode:'-34.6158527,-58.4332985,10mi', count: 500, lan
   			"avatar_url": tweet.user.profile_image_url,
   			"tweet_id": tweet.id_str
   		});
+
+  		console.log(tweet.text);
   	};
   };
 

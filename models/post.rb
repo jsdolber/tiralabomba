@@ -39,14 +39,6 @@ class Post
     0
   end
 
-        #   "username": tweet.user.screen_name,
-        # "name": tweet.user.name,
-        # "content": tweet.text,
-        # "location": tweet.user.location,
-        # "url": "http://twitter.com/" +tweet.user.screen_name + '/status/' + tweet.id_str,
-        # "avatar_url": tweet.user.profile_image_url,
-        # "tweet_id": tweet.id_str
-
   def is_tweet
     !self.tweet_url.nil?
   end
@@ -75,14 +67,16 @@ class Post
 
   def publish
     self.published = true
+    self.created_at = Time.now
 
     erik = Post.twitter_cli
 
     result = self.save
 
-    # erik.update("@#{self.username} " + 
-    #     ["tu tweet fue publicado en http://tiralabomba.com #tiralabomba", 
-    #       "tu genial tweet fue publicado en http://tiralabomba #tiralabomba"].sample) if result
+    erik.update("@#{self.username} " + 
+         ["tu tweet fue publicado en http://tiralabomba.com #tiralabomba", 
+           "tu genial tweet fue publicado en http://tiralabomba.com #tiralabomba"].sample, 
+                  in_reply_to_status_id: self.tweet_id) if result && Padrino.env != :development
 
     result
   end
@@ -122,7 +116,7 @@ class Post
 
   def self.get_page_results(page_num)
 
-    cached_page = Padrino.cache.get("results-#{page_num}")
+    cached_page = nil #Padrino.cache.get("results-#{page_num}")
     
     if cached_page.nil?
       cached_page = Post.where(:published => true).paginate({

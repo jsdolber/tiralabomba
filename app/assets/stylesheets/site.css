@@ -32,7 +32,7 @@ body {
 
 .central-row {padding-right: 25px;padding-left: 15px;}
 
-
+.jumbotron {padding-top: 24px;}
 /* Custom page CSS
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
@@ -175,7 +175,6 @@ p.copyleft {color:#333;}
 
 .post-msg {
   position: absolute; 
-  top: 100px; 
   left: 120px; 
   text-transform: uppercase; 
     padding-left: 50px;
@@ -185,10 +184,12 @@ p.copyleft {color:#333;}
 
 .post-msg.error {
   color:#d2322d;
+  top: 100px; 
 }
 
 .post-msg.success {
   color:#fff;
+  top: 10px; 
 }
 
 /* IPAD */
