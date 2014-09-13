@@ -192,6 +192,9 @@ p.copyleft {color:#333;}
   top: 10px; 
 }
 
+.tweet .avatar img {height: 24px;width: 24px;}
+.tweet .tweet {margin-left: -5px; margin-top: 2px;}
+
 /* IPAD */
 @media (max-width: 1300px) { 
   .addthis_toolbox {display:none;}
