@@ -12,7 +12,7 @@
     %div.row.post-content
       .col-md-1.avatar
         - if post.is_tweet
-          %img{:src => post.avatar_url }
+          %img{:src => post.avatar_url, :onerror => "this.onerror=null;this.src='/assets/bred_small.jpg';" }
         - else
           %div.anon-avatar.text-center.no-select
             A
