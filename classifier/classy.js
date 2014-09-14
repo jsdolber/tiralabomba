@@ -6,8 +6,8 @@ var fs = require('fs');
 var T = new Twit({
     consumer_key:         'bVqypJtXqUiiMH8d6FJd3A01w'
   , consumer_secret:      'UNK3wEZ1C5KA1DSrTC0v9smKPkRv2WTBgbZXKg4AcDwV6DiA3G'
-  , access_token:         '17706291-lYhpVZTIJeUzlI03wpeA7CoCwl1wqyUeha2JZvRoz'
-  , access_token_secret:  'YxMP10KKSaFujFMlGT4ykHBJ1rS5745CiMUlWgKJ3Y8Wz'
+  , access_token:         '17706291-KaAz42qBfUaQtKIqPPDXeUrq47HccxGiWq3XzeVJ7'
+  , access_token_secret:  'FNQJ9S69xIbQh0k3A2gaMk5aZR4IuGLEPrT9UD3z7FMOs'
 });
 
 var hasNegativeWord = function(tweet)
