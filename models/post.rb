@@ -43,6 +43,24 @@ class Post
     !self.tweet_url.nil?
   end
 
+  def self.remove_unpublished
+    Post.where(:published => false).all.each {|p| p.destroy }
+  end
+
+  def self.keep_voting
+    
+    posts = Post.where(:created_at.lt => Time.now - 1.week)
+
+    20.times do 
+       v = Vote.new(:rating => (rand(5) + 1))
+       p = posts.all[rand(posts.count)]
+       p.votes << v
+       p.stored_avg = p.calc_vote_avg
+       p.vote_count = rand(30)
+       p.save!
+    end
+  end
+
   def self.load_from_tweet(id)
       erik = Post.twitter_cli
       
