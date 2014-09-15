@@ -46,7 +46,7 @@ class AppHelper
     if tweets.nil?
       erik = Post.twitter_cli
 
-      tweets = erik.user_timeline("tiralabombaaa")
+      tweets = erik.user_timeline("tiralabombaaa", :exclude_replies => true)
 
       Padrino.cache.set('tweets', tweets, :expires_in => (60*10))
     end
