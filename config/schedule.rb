@@ -26,6 +26,6 @@ every 12.hours do
   runner "Post.remove_unpublished"
 end
 
-every 2.days do
+every 1.days do
   runner "Post.keep_voting"
 end
