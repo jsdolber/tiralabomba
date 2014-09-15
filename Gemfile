@@ -44,6 +44,8 @@ end
 
 gem 'newrelic_rpm'
 
+gem 'whenever', :require => false
+
 # Or Padrino Edge
 # gem 'padrino', :github => 'padrino/padrino-framework'
 
