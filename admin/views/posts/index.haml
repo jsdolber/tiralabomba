@@ -26,9 +26,19 @@
                       =hidden_field_tag :post_ids, :'data-delete-many-ids' => true
                       =submit_tag pat(:delete), :class =>'list-menu-popover-delete-selected-btn btn btn-danger btn-small'
                       .btn.btn-default.btn-small.cancel=pat(:cancel)
+              %li.list-menu-wrapper.list-menu-wrapper-disabled
+                =link_to tag_icon("thumbs-up", pat(:publish_selected)), '#', :id => 'publish-selected', :class => 'list-menu-link list-menu-link-disabled'
+                .list-menu-popover-publish-selected.popover.right
+                  .arrow
+                  %h3.popover-title=pat(:publish_selected_title)
+                  .popover-content
+                    -form_tag url(:posts, :publish_many), :method => :post do
+                      =hidden_field_tag :post_ids, :'data-publish-many-ids' => true
+                      =submit_tag pat(:publish), :class =>'list-menu-popover-publish-selected-btn btn btn-primary btn-small'
+                      .btn.btn-default.btn-small.cancel=pat(:cancel)
         %th.header= mat(:post, :content)
         %th.header= mat(:post, :last_voted)
-        / %th.header= mat(:post, :user_id)
+        %th.header= mat(:post, :published)
         %th.header= mat(:post, :stored_avg)
         %th.header= mat(:post, :created_at)
         %th.header= mat(:post, :updated_at)
@@ -41,7 +51,7 @@
             =check_box_tag 'post_ids[]', :value => post.id, :class => 'list-selectable-checkbox'
           %td.list-column=post.content
           %td.list-column=post.last_voted
-          /%td.list-column=post.user_id
+          %td.list-column=post.published
           %td.list-column=post.stored_avg
           %td.list-column=time_ago_in_words post.created_at
           %td.list-column=time_ago_in_words post.updated_at

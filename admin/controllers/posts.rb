@@ -73,6 +73,22 @@ Tiralabomba::Admin.controllers :posts do
     end
   end
 
+  post :publish_many do
+    @title = "Publicaos"
+    unless params[:post_ids]
+      flash[:error] = pat(:publish_many_error, :model => 'post')
+      redirect(url(:posts, :index))
+    end
+    ids = params[:post_ids].split(',').map(&:strip)
+    posts = Post.find(ids)
+    
+    if posts.each(&:publish)
+    
+      flash[:success] = pat(:publish_many_success, :model => 'Posts', :ids => "#{ids.to_sentence}")
+    end
+    redirect url(:posts, :index)
+  end
+
   delete :destroy, :with => :id do
     @title = "Posts"
     post = Post.find(params[:id])

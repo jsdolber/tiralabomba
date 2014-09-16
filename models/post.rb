@@ -49,7 +49,7 @@ class Post
 
   def self.keep_voting
     
-    posts = Post.where(:created_at.lt => Time.now - 1.week)
+    posts = Post.where(:created_at.gte => Time.now - 1.week, :published => true)
 
     30.times do 
        v = Vote.new(:rating => (rand(5) + 1))
@@ -92,8 +92,11 @@ class Post
     result = self.save
 
     erik.update("@#{self.username} " + 
-         ["tu tweet fue publicado en http://tiralabomba.com #tiralabomba", 
-           "tu genial tweet fue publicado en http://tiralabomba.com #tiralabomba"].sample, 
+         ["tu tweet fue publicado en http://tiralabomba.com", 
+           "tu genial tweet fue publicado en http://tiralabomba.com",
+           "publicamos tu espectacular tweet en http://tiralabomba.com",
+           "sos especial! publicamos tu tweet en http://tiralabomba.com",
+           "nos gustó tu tweet y lo pusimos en http://tiralabomba.com"].sample, 
                   in_reply_to_status_id: self.tweet_id) if result && Padrino.env != :development
 
     result
