@@ -22,10 +22,6 @@ every 1.hour do
   command "/var/www/tiralabomba.com/public_html/scripts/importer.sh"
 end
 
-every 12.hours do
-  runner "Post.remove_unpublished"
-end
-
 every 1.days do
   runner "Post.keep_voting"
 end
