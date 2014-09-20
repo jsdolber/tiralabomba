@@ -47,7 +47,18 @@ var bomba_phrases = ['Que mierda me importa quien se casa en Facebook',
 						'Tipo, lo tengo en frente mio y nose si pegarme un tiro yo o pegárselo a el',
 						'Facebook es una mierda',
 						'Como mierda voy hacer para aprobar esos dos parciales ese día. Voy a morir',
-						'Me chupa la pija el mundo'];
+						'Me chupa la pija el mundo',
+						'Si hubo algo lindo del sueño, fue haberla cagado bien a trompadas',
+						'No es mala suerte, todo eso que te pasa te pasa por puta',
+						'La conchuda de atras no cierra la ventana me cago de frio',
+						'Me enferma que los pibes sean tan pajeros y te lo digan en la cara, para un poco gil',
+						'Porque mierda nunca puedo ser feliz? Porque todo me tiene que salir mal?',
+						'No dormi un carajo, tengo un humor de mierda',
+						'Se confundió de chat y me tiró otro nombre. Malísimo.',
+						'que problema tienen las personas que me ven y me APRETAN los cachetes, mueran forros',
+						'No chapo a la mañana por el aliento a perro muerto, mirá si te voy a hacer un pete matinal',
+						'Odio a las personas que un día te aman y al otro les chupas completamente un huevo. Porque no te matas forro',
+						'Qué se hace cuando tu jefe se hace el boludo 3 días y no te paga'];
 
 for (var i = bomba_phrases.length - 1; i >= 0; i--) {
 	classifier.addDocument(bomba_phrases[i], 'bomba');
@@ -100,7 +111,15 @@ var normal_phrases = ['El rock es una etapa que vas a pasar',
 						'Hoy juega VELEZ es mi felicidad',
 						'Publiqué una nueva foto en Facebook',
 						'Me gusta como te vestís y como andás, me gusta tu pelo, tu cuerpo',
-						'Estoy feliz , a tres metros sobre el cielo'];
+						'Estoy feliz , a tres metros sobre el cielo',
+						'Kimi sin potencia en su Ferrari. Chau Q3 para el finés. Veremos cómo queda, estaba 4to en la primera salida',
+						'Si estas oculta Cómo sabre quien eres Me amas a oscuras',
+						'Hoy seguro que vengan cata , anto y abi a casa',
+						'Bueno, me voy a levantar porque mi cuerpo pide comida',
+						'Que linda es mi prima, le mandas un mensaje y al minuto te responde.',
+						'Esta noche, a Tucumán. Mañana estaremos con Atlético-Sportivo Belgrano por @radiocanal1 junto con el gran @pablosincini',
+						'Mas Linda Arii♥ Lo Que Me Puso en El Muro Mi Princesa♥',
+						'¡Buen día #Chacal! Hoy es sábado. Algunos a estudiar, otros a trabajar y otros de joda. Así es la vida. Igual vos arriba.'];
 
 for (var i = normal_phrases.length - 1; i >= 0; i--) {
 	classifier.addDocument(normal_phrases[i], 'normal');
