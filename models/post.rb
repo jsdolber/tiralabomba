@@ -56,7 +56,7 @@ class Post
        p = posts.all[rand(posts.count)]
        p.votes << v
        p.stored_avg = p.calc_vote_avg
-       p.vote_count = p.vote_count + rand(2) + 1
+       p.vote_count = p.vote_count.to_i + rand(2) + 1
        p.save!
     end
   end
