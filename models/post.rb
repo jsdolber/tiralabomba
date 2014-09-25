@@ -51,10 +51,6 @@ class Post
     self.categories.select {|c| c.official == true}
   end
 
-  def set_all_categories
-
-  end
-
   def self.keep_voting
     
     posts = Post.where(:created_at.gte => Time.now - 1.week, :published => true)
@@ -94,6 +90,7 @@ class Post
   def publish
     self.published = true
     self.created_at = Time.now
+    self.set_categories(self.content.split(/\W+/).select { |s| s.length > 3}.join(','))
 
     erik = Post.twitter_cli
 
