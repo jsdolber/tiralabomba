@@ -30,7 +30,7 @@ Padrino.configure_apps do
   set :session_secret, 'e02b5fb40a2294c739bb7dce4bf19757bf4fd4c5110190f7a5c4df407d7126d2'
   set :protection, true
   set :protect_from_csrf, true
-
+  set :allow_disabled_csrf, true
 end
 
 # Padrino.use(Rack::Auth::Basic) do |username, password|

@@ -53,6 +53,10 @@ $(document).ready(function() {
     var text_max = 500;
     var voted_posts = [];
 
+    $.ajaxSetup({
+      headers: {'HTTP_X_CSRF_TOKEN': $("[name='authenticity_token']").val()}
+    });
+
     // tagcloud
     $.fn.tagcloud.defaults = {
       size: {start: 12, end: 22, unit: 'pt'},

@@ -144,7 +144,7 @@ module Tiralabomba
       builder :rss
     end
 
-    post :create_post do
+    post :create_post, :csrf_protection => false do
       p = Post.new
       
       p.content = strip_tags(params[:content])
@@ -168,7 +168,7 @@ module Tiralabomba
 
     end
 
-    post :vote_post do
+    post :vote_post, :csrf_protection => false do
       p = Post.find(params[:post_id])
       
       if (p)
