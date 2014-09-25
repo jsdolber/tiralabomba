@@ -33,7 +33,7 @@
               %a.link-to-tweet{:href => post.tweet_url.to_s, :target => '_blank'}
                 %i.glyphicon.glyphicon-share-alt      
     %div.row.categories-row
-      = partial 'category_badge', :collection => post.categories
+      = partial 'category_badge', :collection => post.official_categories
     %div.row.voting
       .col-md-3.votes
         %i.glyphicon.glyphicon-fire.vote{:id => 0, :style => (post.stored_avg.to_f > 0 ? "color:red" : "color:inherit")}

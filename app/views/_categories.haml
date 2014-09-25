@@ -2,9 +2,7 @@
   .list-group-item.category-heading
     %i.glyphicon.glyphicon-chevron-right
     TAGS
-  %a.list-group-item{:href => '/', :class => @category.nil?? "active" : ""}
-    :escaped
-      #todos
-  - Category.all(:order => :order.desc).each do |c|
-    %a.list-group-item{:href => "/tags/#{c.name}", :id => c.name, :class => @category == c.name ? "active" : ""}
-      ='#' + c.name
+  %div{ :id => 'categories' }
+    - Category.get_top(20).shuffle.each do |c|
+      %a{:href => "/tags/#{c.name}", :id => c.name, :class => @category == c.name ? "active" : "", :rel => c.mentions}
+        = c.name

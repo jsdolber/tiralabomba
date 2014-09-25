@@ -17,8 +17,8 @@
               html = html.replace(/&/g, '&amp;')
                          .replace(/</g, '&lt;')
                          .replace(/>/g, '&gt;')
-                         .replace(url1, '$1<a target="_blank" href="http://$2">$2</a>$3')
-                         .replace(url2, '$1<a target="_blank" href="$2">$2</a>$5');
+                         .replace(url1, '$1 <a target="_blank" href="http://$2">$2</a>$3')
+                         .replace(url2, '$1 <a target="_blank" href="$2">$2</a>$5');
               $(n).after(html).remove();
             }
           }
@@ -52,6 +52,14 @@ var fnCreatePost;
 $(document).ready(function() {
     var text_max = 500;
     var voted_posts = [];
+
+    // tagcloud
+    $.fn.tagcloud.defaults = {
+      size: {start: 12, end: 22, unit: 'pt'},
+      color: {start: '#BBB', end: '#d2322d'}
+    };
+
+    $('#categories a').tagcloud();
 
     //tooltips
     $(".has-tooltip").tooltip();

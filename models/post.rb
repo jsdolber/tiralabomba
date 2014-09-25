@@ -47,6 +47,14 @@ class Post
     Post.where(:published => false).all.each {|p| p.destroy }
   end
 
+  def official_categories
+    self.categories.select {|c| c.official == true}
+  end
+
+  def set_all_categories
+
+  end
+
   def self.keep_voting
     
     posts = Post.where(:created_at.gte => Time.now - 1.week, :published => true)
@@ -110,7 +118,7 @@ class Post
     self.category_ids.clear #empty whatever there is
     raw_categories.split(",").each do |cat|
        if cat.length > 0
-         c = Category.find_by_short_name(cat)
+         c = Category.find_or_create(cat)
          if !c.nil?
            self.categories << c
          end

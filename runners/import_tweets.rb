@@ -8,8 +8,8 @@ tweets = JSON.parse(File.read('tweets.json'))
 tweets.each do |tweet|
 	p = Post.new :content => tweet["content"],
 					:user_id => tweet["username"] + (rand * 10).to_s,
-					:stored_avg => 0,
-					:vote_count => 0,
+					:stored_avg => 3,
+					:vote_count => 1,
 					:friendly_url => Post.get_friendly_url(tweet["content"]),
 					:location_neighborhood => tweet["location"],
 					:location_country => "Argentina",
