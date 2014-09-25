@@ -24,6 +24,15 @@ class Category
   end
 
   def self.get_top(per_page)
-  	Category.paginate({:order => :mentions.desc, :per_page => per_page, :page => 0})
+    cached_page = Padrino.cache.get("categories")
+
+    if cached_page.nil?
+        cached_page = Category.paginate({:order => :mentions.desc, :per_page => per_page, :page => 0})
+
+        Padrino.cache.set("categories", cached_page, :expires_in => (60*30))
+    end
+
+    cached_page
+  	
   end
 end
