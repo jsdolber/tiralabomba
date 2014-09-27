@@ -58,7 +58,15 @@ var bomba_phrases = ['Que mierda me importa quien se casa en Facebook',
 						'que problema tienen las personas que me ven y me APRETAN los cachetes, mueran forros',
 						'No chapo a la mañana por el aliento a perro muerto, mirá si te voy a hacer un pete matinal',
 						'Odio a las personas que un día te aman y al otro les chupas completamente un huevo. Porque no te matas forro',
-						'Qué se hace cuando tu jefe se hace el boludo 3 días y no te paga'];
+						'Qué se hace cuando tu jefe se hace el boludo 3 días y no te paga',
+						'Si me quedo parada cuando hay un asiento vacio es porque no me voy a sentar, conchuda.',
+						'Que puta que soy el otro día me comí como a 5 pibes en soul',
+						'conozco una chica que antes de hacer caca se mete el dedo en el culo',
+						'Me acuerdo de mi ex, decia que miraba Hentai y se tocaba pensando en mi',
+						'hoy en el bondi un viejo de mierda ,se tiro un ninja asesino , que forro hdmp ,encima abrio la ventanita',
+						'La verdad es que a mi me caes como el reverendo culo y te deseo lo peor siempre.',
+						'Me he arrepentido más veces de ser buena persona que de ser una hija de puta',
+						'Buen día al forro de mi vecino que esta a los martillazos'];
 
 for (var i = bomba_phrases.length - 1; i >= 0; i--) {
 	classifier.addDocument(bomba_phrases[i], 'bomba');
@@ -119,7 +127,14 @@ var normal_phrases = ['El rock es una etapa que vas a pasar',
 						'Que linda es mi prima, le mandas un mensaje y al minuto te responde.',
 						'Esta noche, a Tucumán. Mañana estaremos con Atlético-Sportivo Belgrano por @radiocanal1 junto con el gran @pablosincini',
 						'Mas Linda Arii♥ Lo Que Me Puso en El Muro Mi Princesa♥',
-						'¡Buen día #Chacal! Hoy es sábado. Algunos a estudiar, otros a trabajar y otros de joda. Así es la vida. Igual vos arriba.'];
+						'¡Buen día #Chacal! Hoy es sábado. Algunos a estudiar, otros a trabajar y otros de joda. Así es la vida. Igual vos arriba.',
+						'Se perfila como el tuit del año 2014',
+						'Mario Kempes será sometido a un triple bypass el martes. La intervención se realizará en USA. Todos con vos, Matador',
+						'Necesito #rock y acá en #plantaalta no me lo dan... Me voy al #paraiso... Chau nos vemos....',
+						'Gente que insiste en bañar gatos. Se bañan sólos, no los torturen.',
+						'En una balanza puse los buenos y malos tiempos para mi sorpresa me vi sonriendo pero a la misma vez sentí mis lagrimas cayendo.',
+						'por hoy te entrego todo mi corazon y juntos iremos por +',
+						'nada más feo que sentirse mal y no saber que te pasa, que te falta, que es lo que queres'];
 
 for (var i = normal_phrases.length - 1; i >= 0; i--) {
 	classifier.addDocument(normal_phrases[i], 'normal');
