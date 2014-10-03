@@ -169,7 +169,10 @@ T.get('search/tweets', { geocode:'-34.6158527,-58.4332985,10mi', count: 500, lan
   			"tweet_id": tweet.id_str
   		});
 
-  		console.log(tweet.text);
+  		//var classifications = classifier.getClassifications(tweet.text);
+  		//console.log(parseFloat(classifications[0]["value"]));
+  		//if (parseFloat(classifications[0]["value"]) > 0.0005) { console.log(classifications[0]["label"] + ":" + tweet.text); };
+  		
   	};
   };
 

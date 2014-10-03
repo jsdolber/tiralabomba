@@ -73,7 +73,7 @@ Tiralabomba::Admin.controllers :posts do
     end
   end
 
-  post :publish_many do
+  post :publish_many, :csrf_protection => false do
     @title = "Publicaos"
     unless params[:post_ids]
       flash[:error] = pat(:publish_many_error, :model => 'post')
