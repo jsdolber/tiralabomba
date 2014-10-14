@@ -76,7 +76,7 @@ module Tiralabomba
       should_set_vars = request.route_obj.action == :index || 
                     request.route_obj.action == 'tags' || 
                     request.route_obj.action == :search || 
-                    request.route_obj.action == :archive
+                    request.route_obj.action == :archive unless request.route_obj.nil?
 
       set_sidebar_vars if should_set_vars
     end

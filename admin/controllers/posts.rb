@@ -83,7 +83,7 @@ Tiralabomba::Admin.controllers :posts do
     posts = Post.find(ids)
     
     if posts.each(&:publish)
-      Post.remove_unpublished
+      #Post.remove_unpublished
       flash[:success] = pat(:publish_many_success, :model => 'Posts', :ids => "#{ids.to_sentence}")
     end
     redirect url(:posts, :index)

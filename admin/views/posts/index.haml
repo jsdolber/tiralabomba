@@ -37,6 +37,7 @@
                       =submit_tag pat(:publish), :class =>'list-menu-popover-publish-selected-btn btn btn-primary btn-small'
                       .btn.btn-default.btn-small.cancel=pat(:cancel)
         %th.header= mat(:post, :content)
+        %th.header= mat(:post, :username)
         %th.header= mat(:post, :last_voted)
         %th.header= mat(:post, :published)
         %th.header= mat(:post, :stored_avg)
@@ -50,11 +51,11 @@
           %td.list-column.list-selectable
             =check_box_tag 'post_ids[]', :value => post.id, :class => 'list-selectable-checkbox'
           %td.list-column=post.content
-          %td.list-column=post.last_voted
+          %td.list-column=post.username
+          %td.list-column=post.last_voted          
           %td.list-column=post.published
           %td.list-column=post.stored_avg
           %td.list-column=time_ago_in_words post.created_at
-          %td.list-column=time_ago_in_words post.updated_at
           %td.list-column.list-row-action
             .list-row-action-wrapper
               =link_to tag_icon(:edit), :href => url(:posts, :edit, :id => post.id), :rel => :tooltip, :title => "#{pat(:edit)} post", :class => 'list-row-action-wrapper-link'
