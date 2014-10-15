@@ -1,0 +1,2 @@
+Post.remove_unpublished
+Post.keep_voting

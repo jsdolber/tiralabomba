@@ -66,7 +66,16 @@ var bomba_phrases = ['Que mierda me importa quien se casa en Facebook',
 						'hoy en el bondi un viejo de mierda ,se tiro un ninja asesino , que forro hdmp ,encima abrio la ventanita',
 						'La verdad es que a mi me caes como el reverendo culo y te deseo lo peor siempre.',
 						'Me he arrepentido más veces de ser buena persona que de ser una hija de puta',
-						'Buen día al forro de mi vecino que esta a los martillazos'];
+						'Buen día al forro de mi vecino que esta a los martillazos',
+						'Mas pasa el tiempo mas odio al chabon ese, ojalá te mueras pedazo de pelotudo',
+						'Flaca perdiste los codigos que te paso? Respeta un poquito.',
+						'Cada dia que pasa lo odio un poquitito mas, puto puto puto.',
+						'Gordo olor a teta la reconcha de tu mama la puta esa. GORDO TETON',
+						'Facu me decepcionaste con tu novio, los agarro a los 2 y los hago hombres en 2 minutos',
+						'No se como este pibe no se cansa de tener un humor tan mierda todos los días',
+						'Que llueva mucho, bastante, lo suficiente como para no levantarme y tener que ir al puto colegio',
+						'Que ganas de mandar a todo el mundo a la mierda',
+						'Cada vez que me siento a cagar me acuerdo de vos, pedazito de mierda'];
 
 for (var i = bomba_phrases.length - 1; i >= 0; i--) {
 	classifier.addDocument(bomba_phrases[i], 'bomba');

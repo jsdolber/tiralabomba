@@ -22,6 +22,6 @@ every 1.hour do
   command "/var/www/tiralabomba.com/public_html/scripts/importer.sh"
 end
 
-every 1.days do
-  runner "Post.keep_voting"
+every 1.day, :at => '4:30 am' do
+  command "/var/www/tiralabomba.com/public_html/scripts/remover.sh"
 end
