@@ -55,7 +55,7 @@ class Post
     
     posts = Post.where(:created_at.gte => Time.now - 1.week, :published => true)
 
-    30.times do 
+    15.times do 
        v = Vote.new(:rating => (rand(5) + 1))
        p = posts.all[rand(posts.count)]
        p.votes << v
