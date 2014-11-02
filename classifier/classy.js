@@ -12,7 +12,7 @@ var T = new Twit({
 
 var hasNegativeWord = function(tweet)
 {
-	var negative_keywords = ['sammywilkfollowspree'];
+	var negative_keywords = ['sammywilkfollowspree', 'http://'];
 	for (var i = negative_keywords.length - 1; i >= 0; i--) {
 		var nega = negative_keywords[i];
 		if (tweet.indexOf(nega) > -1) { return true; };
@@ -75,7 +75,13 @@ var bomba_phrases = ['Que mierda me importa quien se casa en Facebook',
 						'No se como este pibe no se cansa de tener un humor tan mierda todos los días',
 						'Que llueva mucho, bastante, lo suficiente como para no levantarme y tener que ir al puto colegio',
 						'Que ganas de mandar a todo el mundo a la mierda',
-						'Cada vez que me siento a cagar me acuerdo de vos, pedazito de mierda'];
+						'Cada vez que me siento a cagar me acuerdo de vos, pedazito de mierda',
+						'Como me enferma que hagan ruido cuando mastican la comida. COME BIEN IDIOTA.',
+						'Ay,morite Fede encima que te hablo no me contestas. Que mal me caes',
+						'Me iria a mi casa, pero vivo en un barrio de mierda y me cagan violando',
+						'Para tratarme para el orto nunca tiene problema , para preguntarme como estoy todo le chupa un huevo',
+						'Hay gente boluda, pero vos te vas a la mierda.',
+						'Negros de mierda que lo poquito que tienen en la cabeza es maldad'];
 
 for (var i = bomba_phrases.length - 1; i >= 0; i--) {
 	classifier.addDocument(bomba_phrases[i], 'bomba');
