@@ -18,7 +18,7 @@
     .col-md-3.tags
       .input-tag
         %select.multiselect{:multiple => "multiple", :id => "dropit_category", :name => "category"}
-          - Category.all(:order => :order.desc).each do |c|
+          - Category.where(:official => true).all(:order => :order.desc).each do |c|
             %option{:value => c.short_name, :name => c.short_name}
               = "#" + c.name
     .col-md-2.text-right.boom-dest
