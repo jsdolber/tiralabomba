@@ -30,6 +30,7 @@ class Post
                                                       :too_short => "tu mensaje tiene que ser más largo (mínimo 30)"  
   validate :throttle_interval
   validate :validate_content_line_breaks
+  validate :validate_language
 
   def calc_vote_avg
     total_rating = 0
@@ -208,6 +209,11 @@ class Post
   def validate_content_line_breaks
     line_break_cnt = content.count 13.chr
     errors.add( :content, "el mensaje es inválido, probá con menos cortes.") if line_break_cnt > 8
+  end
+
+  def validate_language
+    WtfLang::API.key = "8359859cf052c3a14d497c6ab12707dd"
+    errors.add( :content, "el mensaje es inválido.") unless content.lang == 'es'
   end
 
   def self.twitter_cli

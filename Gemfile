@@ -46,6 +46,8 @@ gem 'newrelic_rpm'
 
 gem 'whenever', :require => false
 
+gem 'wtf_lang'
+
 # Or Padrino Edge
 # gem 'padrino', :github => 'padrino/padrino-framework'
 
