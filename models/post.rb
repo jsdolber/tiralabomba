@@ -212,7 +212,7 @@ class Post
   end
 
   def validate_language
-    WtfLang::API.key = "8359859cf052c3a14d497c6ab12707dd"
+    WtfLang::API.key = "8359859cf052c3a14d497c6ab12707dd" if WtfLang::API.key.nil? || WtfLang::API.key.length == 0
     errors.add( :content, "el mensaje es inválido.") unless content.lang == 'es'
   end
 
