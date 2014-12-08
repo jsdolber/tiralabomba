@@ -17,6 +17,8 @@ require 'newrelic_rpm'
 # ## Configure your I18n
 #
 I18n.default_locale = :es
+
+WtfLang::API.key = "8359859cf052c3a14d497c6ab12707dd"
 #
 # ## Configure your HTML5 data helpers
 #
