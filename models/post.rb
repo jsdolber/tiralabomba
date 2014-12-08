@@ -212,7 +212,7 @@ class Post
   end
 
   def validate_language
-    errors.add( :content, "el mensaje es inválido.") unless content.lang == 'es'
+    errors.add( :content, "el mensaje es inválido.") unless content.dup.lang == 'es'
   end
 
   def self.twitter_cli
