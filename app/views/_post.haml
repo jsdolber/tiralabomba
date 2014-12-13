@@ -22,7 +22,8 @@
             %strong
               = post.name
             %small.tweet-username
-              = '@' + post.username
+              %a{:href => 'http://twitter.com/' + post.username}
+                = '@' + post.username
           - else
             %strong
               anónimo

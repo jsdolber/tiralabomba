@@ -240,3 +240,5 @@ p.copyleft {color:#333;}
   .post-msg {top: 50px;}
   .post-msg.error {top: 155px;}
 }
+
+.tweet-username a:hover {text-decoration: none;}
