@@ -12,8 +12,8 @@ end
 erik = Twitter::REST::Client.new do |config|
 	config.consumer_key = 'bVqypJtXqUiiMH8d6FJd3A01w'
 	config.consumer_secret = 'UNK3wEZ1C5KA1DSrTC0v9smKPkRv2WTBgbZXKg4AcDwV6DiA3G'
-	config.access_token        = '17706291-lYhpVZTIJeUzlI03wpeA7CoCwl1wqyUeha2JZvRoz'
-	config.access_token_secret = 'YxMP10KKSaFujFMlGT4ykHBJ1rS5745CiMUlWgKJ3Y8Wz'
+	config.access_token        = '17706291-KaAz42qBfUaQtKIqPPDXeUrq47HccxGiWq3XzeVJ7'
+	config.access_token_secret = 'FNQJ9S69xIbQh0k3A2gaMk5aZR4IuGLEPrT9UD3z7FMOs'
 end
 
 tweets = erik.user_timeline(username, :count => 200)
