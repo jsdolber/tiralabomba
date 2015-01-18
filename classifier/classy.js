@@ -81,7 +81,13 @@ var bomba_phrases = ['Que mierda me importa quien se casa en Facebook',
 						'Me iria a mi casa, pero vivo en un barrio de mierda y me cagan violando',
 						'Para tratarme para el orto nunca tiene problema , para preguntarme como estoy todo le chupa un huevo',
 						'Hay gente boluda, pero vos te vas a la mierda.',
-						'Negros de mierda que lo poquito que tienen en la cabeza es maldad'];
+						'Negros de mierda que lo poquito que tienen en la cabeza es maldad',
+						'Si llego a tener la vida de esta mina, prefiero morirme antes',
+						'Esas ganas de pegarles un tiro en la frente que generan algunas personas es increíble.',
+						'Tener que laburar todo el finde me da ganas de suicidarme',
+						'Qué hijos de mil puta y corruptos son los que trabajan en aduana',
+						'Hoy el calor hace que los jefes rompan las bolas muchísimo más que de costumbre!',
+						'Flaca trastornada de mierda deja de chusmearme el twitter y metete en tu vida psicopata'];
 
 for (var i = bomba_phrases.length - 1; i >= 0; i--) {
 	classifier.addDocument(bomba_phrases[i], 'bomba');
