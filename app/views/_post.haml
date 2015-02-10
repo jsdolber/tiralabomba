@@ -28,8 +28,9 @@
             %strong
               anónimo
         .row
-          %span.text.post-content
-            = h!(post.content)
+          %span.text
+            %span.post-text-content
+              = h!(post.content)
             - if post.is_tweet
               %a.link-to-tweet{:href => post.tweet_url.to_s, :target => '_blank'}
                 %i.glyphicon.glyphicon-share-alt      
