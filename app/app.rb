@@ -82,6 +82,7 @@ module Tiralabomba
     end
     
     get :index do
+      
       @post = Post.new
 
       @page = (params[:p] || 1).to_i

@@ -31,6 +31,7 @@ class Post
   validate :throttle_interval
   validate :validate_content_line_breaks
   validate :validate_language
+  after_create :handle_direct_msgs
 
   def calc_vote_avg
     total_rating = 0
@@ -91,6 +92,7 @@ class Post
   def publish
     self.published = true
     self.created_at = Time.now
+    
     self.set_categories(self.content.split(/\W+/).select { |s| s.length > 3}.join(','))
 
     erik = Post.twitter_cli
@@ -201,7 +203,7 @@ class Post
       minute_diff = (Time.now - last_post.created_at) / 60
 
       if minute_diff < 0.3 && self.new?
-        errors.add( :content, "esperá un poco para postear de nuevo")
+        errors.add( :content, "esperá un poco para postear de nuevo") if Padrino.env != :development
       end  
     end  
   end
@@ -213,6 +215,23 @@ class Post
 
   def validate_language
     errors.add( :content, "el mensaje es inválido.") unless content.dup.lang == 'es'
+  end
+
+  def handle_direct_msgs    
+    if !self.is_tweet
+      users = content.split(' ').select {|str| str.start_with?('@') }
+      users.each { |u| send_direct_msg(u.gsub(/\W+/, ''), self.friendly_url) } unless users.count > 3
+    end
+  end
+
+  def send_direct_msg(twitter_name, url)
+    erik = Post.twitter_cli
+    erik.update("@#{twitter_name} " + 
+         ["un justiciero anónimo te dejó un mensaje en http://tiralabomba.com/show/#{url}", 
+           "un ex-amigo tuyo dijo algo sobre vos en http://tiralabomba.com/show/#{url}",
+           "te dejaron un regalo en http://tiralabomba.com/show/#{url}",
+           "alguien dijo algo (seguramente malo) sobre vos en http://tiralabomba.com/show/#{url}",
+           "estabas teniendo un buen día hasta que pusieron esto de vos en http://tiralabomba.com/show/#{url}"].sample) if Padrino.env != :development
   end
 
   def self.twitter_cli

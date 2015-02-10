@@ -17,8 +17,8 @@
               html = html.replace(/&/g, '&amp;')
                          .replace(/</g, '&lt;')
                          .replace(/>/g, '&gt;')
-                         .replace(url1, '$1 <a target="_blank" href="http://$2">$2</a>$3')
-                         .replace(url2, '$1 <a target="_blank" href="$2">$2</a>$5');
+                         .replace(url1, '$1<span>&nbsp;</span><a target="_blank" href="http://$2">$2</a>$3<span>&nbsp;</span>')
+                         .replace(url2, '$1<span>&nbsp;</span><a target="_blank" href="$2">$2</a>$5<span>&nbsp;</span>');
               $(n).after(html).remove();
             }
           }
@@ -121,7 +121,8 @@ $(document).ready(function() {
                 var token = tokens[i];
 
                 if (token.indexOf("@") == 0) {
-                    var newToken = '<a href="http://twitter.com/' + token.replace("@", "") + '" target="_blank">' + token + "</a>";
+                    var newToken = '<a href="http://twitter.com/' + token.replace("@", "").replace(/\W+/g, " ") + 
+                                        '" target="_blank">' + token + "</a>";
                     var currentHtml = $(this).html().replace(token, newToken);
                     $(this).html(currentHtml);
                 };
@@ -137,6 +138,7 @@ $(document).ready(function() {
         $(".tweet-text").each(linkToTwitter);
 
         $('.tweet-username').each(linkToTwitter);
+        $(".post-content").each(linkToTwitter);
     }
 
     fnCreatePost = function()
@@ -202,6 +204,7 @@ $(document).ready(function() {
     });
 
     $(".tweet").linkify();
+    $(".post-content").linkify();
 
     tweetParser();
 
@@ -263,11 +266,11 @@ $(document).ready(function() {
         if ($("#dropit_input").val().length == 0) {            
             $(".input-tag").hide('fast');
             $(this).hide('fast');
-            $(".btn-create").html('<i class="glyphicon glyphicon-fire" ></i>&nbspNuevo Post');
+            $(".btn-create").html('<i class="glyphicon glyphicon-fire" ></i>&nbspMandar Mensaje');
         };
     });
 
-    $(".btn-create").html('<i class="glyphicon glyphicon-fire" ></i>&nbspNuevo Post');
+    $(".btn-create").html('<i class="glyphicon glyphicon-fire" ></i>&nbspMandar Mensaje');
 
 
     fnGetLocation();
